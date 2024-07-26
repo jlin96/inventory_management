@@ -8,23 +8,31 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "user")
+@Table(name = "\"User\"")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(length = 50, name = "first_name")
+    @Column(name = "first_name", length = 50)
     private String firstName;
 
-    @Column(length = 50, name = "last_name")
+    @Column(name = "last_name", length = 50)
     private String lastName;
 
-    @Column(length = 50)
+    //Email should be unique
+    @Column(length = 50) 
     private String email;
 
     private String password;
+
+    public User(int id, String firstName, String lastName, String email) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
 
     public int getId() {
         return id;
@@ -65,7 +73,5 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    
 
 }
