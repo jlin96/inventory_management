@@ -27,6 +27,8 @@ public class Warehouse {
         this.address = address;
     }
 
+    //Needs list of product maybe a join table?
+
     public int getId() {
         return id;
     }

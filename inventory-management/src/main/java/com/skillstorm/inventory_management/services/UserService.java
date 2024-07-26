@@ -28,6 +28,7 @@ public class UserService {
         BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();
         String encryptedPass = bcrypt.encode(user.getPassword());
         user.setPassword(encryptedPass);
+        //return DTO
         return repo.save(user);
     }
 
@@ -35,15 +36,22 @@ public class UserService {
     public User update(int id, User user) {
         Optional<User> dbUser = repo.findById(id);
 
-        if(dbUser.isPresent()) {
-            User presentUser = dbUser.get();
-            presentUser.setEmail(user.getEmail());
-            presentUser.setFirstName(user.getFirstName());
-            presentUser.setLastName(user.getLastName());
-        } else {
-            //return user not found exception
-        }
-        return repo.save(user);
+        User presentUser = dbUser.get();
+        presentUser.setEmail(user.getEmail());
+        presentUser.setFirstName(user.getFirstName());
+        presentUser.setLastName(user.getLastName());
+
+        //Error handling needed incase it is not present
+        // if(dbUser.isPresent()) {
+        //     User presentUser = dbUser.get();
+        //     presentUser.setEmail(user.getEmail());
+        //     presentUser.setFirstName(user.getFirstName());
+        //     presentUser.setLastName(user.getLastName());
+        // } else {
+        //     //return user not found exception
+        // }
+        // //return DTO
+        return repo.save(presentUser);
     }
 
     public void delete(int id) {
