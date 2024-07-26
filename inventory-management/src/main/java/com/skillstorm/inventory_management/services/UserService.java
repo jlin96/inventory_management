@@ -54,7 +54,7 @@ public class UserService {
         return repo.save(presentUser);
     }
 
-    public void delete(int id) {
+    public void deleteById(int id) {
         repo.deleteById(id);
     }
 

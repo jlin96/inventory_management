@@ -40,7 +40,9 @@ public class WarehouseService {
         return repo.save(foundWarehouse);
     }
 
-    public void delete(int id) {
+    public void deleteById(int id) {
         repo.deleteById(id);
     }
+
+    //Get List of products according to warehouse
 }
