@@ -24,13 +24,6 @@ public class Product {
     @Column(name = "stock_amount")
     private int stockAmount;
 
-    public Product(int id, String name, String description, int stockAmount) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.stockAmount = stockAmount;
-    }
-
     public int getId() {
         return id;
     }
