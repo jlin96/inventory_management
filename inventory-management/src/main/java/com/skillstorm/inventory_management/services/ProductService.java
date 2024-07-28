@@ -2,18 +2,24 @@ package com.skillstorm.inventory_management.services;
 
 import java.util.Optional;
 
+import javax.swing.text.html.Option;
+
 import org.springframework.stereotype.Service;
 
 import com.skillstorm.inventory_management.models.Product;
+import com.skillstorm.inventory_management.models.Warehouse;
 import com.skillstorm.inventory_management.repositories.ProductRepository;
+import com.skillstorm.inventory_management.repositories.WarehouseRepository;
 
 @Service
 public class ProductService {
 
     private ProductRepository repo;
+    private WarehouseRepository warehouseRepo;
 
-    public ProductService(ProductRepository repo) {
+    public ProductService(ProductRepository repo, WarehouseRepository warehouseRepo) {
         this.repo = repo;
+        this.warehouseRepo = warehouseRepo;
     }
 
     public Iterable<Product> findAll() {
@@ -25,6 +31,15 @@ public class ProductService {
     }
 
     public Product save(Product product) {
+        Warehouse savedWarehouse = product.getWarehouse();
+        Optional<Warehouse> dbWarehouse = warehouseRepo.findById(savedWarehouse.getId());
+
+        if(dbWarehouse.isPresent()) {
+            product.setWarehouse(dbWarehouse.get());
+        } else {
+            return null;
+        }
+
         return repo.save(product);
     }
 

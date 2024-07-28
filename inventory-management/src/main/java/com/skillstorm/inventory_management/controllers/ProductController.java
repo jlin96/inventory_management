@@ -44,9 +44,15 @@ public class ProductController {
     }
 
     @PostMapping
-    public Product save(@Valid @RequestBody Product product) {
-        System.out.println(product);
-        return service.save(product);
+    public ResponseEntity<Product> save(@Valid @RequestBody Product product) {
+        Product returnedProduct = service.save(product);
+
+        if(returnedProduct == null) {
+            //Shouldn't need this, when adding a product, it should be from a warehouse which contains an ID
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return  ResponseEntity.ok(returnedProduct);
+        }
     }
 
     @PutMapping("/{id}")

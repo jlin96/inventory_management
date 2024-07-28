@@ -2,8 +2,11 @@ package com.skillstorm.inventory_management.services;
 
 import java.util.Optional;
 
+import javax.swing.text.html.Option;
+
 import org.springframework.stereotype.Service;
 
+import com.skillstorm.inventory_management.models.Product;
 import com.skillstorm.inventory_management.models.Warehouse;
 import com.skillstorm.inventory_management.repositories.WarehouseRepository;
 
@@ -18,6 +21,16 @@ public class WarehouseService {
 
     public Iterable<Warehouse> findAll() {
         return repo.findAll();
+    }
+
+    public Iterable<Product> findAllProduct(int id) {
+        Optional<Warehouse> dbWarehouse = repo.findById(id);
+
+        Warehouse foundWarehouse = dbWarehouse.get();
+
+        Iterable<Product> warehouseProducts = foundWarehouse.getProduct();
+
+        return warehouseProducts;
     }
 
     public Optional<Warehouse> findById(int id) {
@@ -43,6 +56,4 @@ public class WarehouseService {
     public void deleteById(int id) {
         repo.deleteById(id);
     }
-
-    //Get List of products according to warehouse
 }

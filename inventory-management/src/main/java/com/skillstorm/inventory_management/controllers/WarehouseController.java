@@ -34,6 +34,11 @@ public class WarehouseController {
         return service.findAll();
     }
 
+    @GetMapping("/getProducts/{id}")
+    public Iterable<Product> findAllProduct(@PathVariable int id) {
+        return service.findAllProduct(id);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Warehouse> findById(@PathVariable int id) {
         Optional<Warehouse> warehouse = service.findById(id);

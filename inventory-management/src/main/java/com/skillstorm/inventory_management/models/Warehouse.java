@@ -2,8 +2,11 @@ package com.skillstorm.inventory_management.models;
 
 import java.util.List;
 
+import org.hibernate.annotations.Cascade;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.CascadeType;
@@ -20,7 +23,6 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="warehouses")
-//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Warehouse {
 
     @Id
@@ -33,17 +35,31 @@ public class Warehouse {
     @Column(length = 50, nullable = false)
     private String address;
 
-    @OneToMany(mappedBy = "warehouse")
-    //@JsonBackReference
+    @OneToMany(mappedBy = "warehouse", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonManagedReference
     List<Product> product;
 
-    public Warehouse() {}
+    // public Warehouse() {}
 
-    public Warehouse(int id, String name, String address) {
-        this.id = id;
-        this.name = name;
-        this.address = address;
+    // public Warehouse(int id, String name, String address, List<Product> product) {
+    //     this.id = id;
+    //     this.name = name;
+    //     this.address = address;
+    //     this.product = product;
+    // }
+
+    public Warehouse addProduct(Product newProduct) {
+        product.add(newProduct);
+        newProduct.setWarehouse(this);
+        return this;
     }
+
+    public Warehouse removeProduct(Product oldProduct) {
+        product.remove(oldProduct);
+        oldProduct.setWarehouse(null);
+        return this;
+    }
+
 
     public int getId() {
         return id;
@@ -69,5 +85,19 @@ public class Warehouse {
         this.address = address;
     }
 
+    public List<Product> getProduct() {
+        return product;
+    }
+
+    public void setProduct(List<Product> product) {
+        this.product = product;
+    }
+
+    @Override
+    public String toString() {
+        return "Warehouse [id=" + id + ", name=" + name + ", address=" + address + ", product=" + product + "]";
+    }
+    
+    
     
 }
