@@ -45,12 +45,12 @@ public class ProductController {
 
     @PostMapping
     public Product save(@Valid @RequestBody Product product) {
+        System.out.println(product);
         return service.save(product);
     }
 
     @PutMapping("/{id}")
     public Product update(@PathVariable int id, @Valid @RequestBody Product product) {
-        //
         return service.update(id, product);
     }
 
