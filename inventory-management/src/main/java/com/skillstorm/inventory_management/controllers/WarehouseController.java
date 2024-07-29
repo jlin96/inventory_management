@@ -34,6 +34,7 @@ public class WarehouseController {
         return service.findAll();
     }
 
+    //Might not need
     @GetMapping("/getProducts/{id}")
     public Iterable<Product> findAllProduct(@PathVariable int id) {
         return service.findAllProduct(id);

@@ -2,8 +2,6 @@ package com.skillstorm.inventory_management.services;
 
 import java.util.Optional;
 
-import javax.swing.text.html.Option;
-
 import org.springframework.stereotype.Service;
 
 import com.skillstorm.inventory_management.models.Product;
