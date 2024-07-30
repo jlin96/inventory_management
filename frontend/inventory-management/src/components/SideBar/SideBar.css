@@ -1,8 +1,39 @@
-.side-bar-main {
+.side-bar-column {
     flex-direction: column;
+    font-family: "Roboto";
+    border-radius: 60px 0px 0px 60px;
+    background-color: white;
+    border-collapse: separate;
+    box-shadow: 10px 0 5px -2px #ecf0f2;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: large;
+    font-weight: 600;
 }
-.inventory-name {
+.side-bar-header {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    height: 12vh;
+    color: black;
+    border-bottom: #ebf0ee solid 3px;
+
+}
+
+.name-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+div.word {
+    color: #F39C4F;
+}
+
+.side-bar-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 88vh;
+    color: black;
+    width: auto;
 }

@@ -1,0 +1,13 @@
+.side-bar-items {
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0px;
+    width: 100%;
+    color: #93979B;
+}
+
+.side-bar-items:hover {
+    background-color: #fff7f0;
+    cursor: pointer;
+    border-right: #F39C4F 4px solid;
+}
