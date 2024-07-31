@@ -1,5 +1,6 @@
 package com.skillstorm.inventory_management.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.skillstorm.inventory_management.dtos.ProductDto;
 import com.skillstorm.inventory_management.models.Product;
 import com.skillstorm.inventory_management.services.ProductService;
 
@@ -31,7 +33,7 @@ public class ProductController {
     }
 
     @GetMapping
-    public Iterable<Product> findAll() {
+    public List<ProductDto> findAll() {
         return service.findAll();
     }
 

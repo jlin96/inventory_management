@@ -1,10 +1,14 @@
 package com.skillstorm.inventory_management.services;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
 import com.skillstorm.inventory_management.models.Product;
+import com.skillstorm.inventory_management.dtos.ProductDto;
+import com.skillstorm.inventory_management.mappers.ProductMapper;
 import com.skillstorm.inventory_management.models.Warehouse;
 import com.skillstorm.inventory_management.repositories.ProductRepository;
 import com.skillstorm.inventory_management.repositories.WarehouseRepository;
@@ -14,14 +18,20 @@ public class ProductService {
 
     private ProductRepository repo;
     private WarehouseRepository warehouseRepo;
+    private ProductMapper mapper;
 
-    public ProductService(ProductRepository repo, WarehouseRepository warehouseRepo) {
+    public ProductService(ProductRepository repo, WarehouseRepository warehouseRepo, ProductMapper mapper) {
         this.repo = repo;
         this.warehouseRepo = warehouseRepo;
+        this.mapper = mapper;
     }
 
-    public Iterable<Product> findAll() {
-        return repo.findAll();
+    public List<ProductDto> findAll() {
+        List<Product> dbProducts = repo.findAll();
+        
+        List<ProductDto> productDto = dbProducts.stream().map(mapper::toDto).collect(Collectors.toList());
+        
+        return productDto;
     }
 
     public Optional<Product> findById(int id) {
