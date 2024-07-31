@@ -1,10 +1,9 @@
-import logo from '../../assets/logo.png';
 import './SideBar.css';
 import SideBarItems from '../SideBarItems/SideBarItems';
 
 export default function SideBar() {
     //can be extracted into enum when more menu items
-    let menuItems = ["Warehouses", "Product"]
+    let menuItems = ["Warehouses", "Products"]
 
     let mappedItems = menuItems.map((name, idx) => {
         return (

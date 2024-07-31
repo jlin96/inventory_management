@@ -1,6 +1,9 @@
-.main-content {
+.main-content-display {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    padding: 30px;
+    margin: 30px;
     display: flex;
     flex-direction: column;
+    /* justify-content: space-around; */
+    height: 100%;
+    /* width: 100%; */
 }

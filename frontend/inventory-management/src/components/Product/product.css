@@ -1,0 +1,38 @@
+.product-title-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    padding: 60px 0px 30px 0px
+}
+
+.product-words {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.product-title {
+    font-size: 35px;
+    color: black;
+}
+
+.product-description {
+    color: #828385;
+
+}
+
+.product-upload-button {
+    color: #F8f8f8;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #F39C4F;
+    align-items: center;
+    font-size: 16px;
+    width: 12%;
+    padding: 10px;
+    height: 40px;
+    font-weight: 600;
+}   
