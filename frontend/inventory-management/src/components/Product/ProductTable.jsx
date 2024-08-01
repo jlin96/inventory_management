@@ -15,11 +15,13 @@ import Paper from '@mui/material/Paper';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 
 import {deleteProduct} from '../../slices/warehouseSlice'
 import { useDispatch } from 'react-redux';
+import ProductEditModal from '../ProductEditModal/ProductEditModal';
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -77,6 +79,12 @@ const headCells = [
     numeric: true,
     disablePadding: false,
     label: 'Warehouse',
+  },
+  {
+    id: 'placeholder',
+    numeric: true,
+    disablePadding: false,
+    label: '',
   },
   {
     id: 'placeholder',
@@ -152,20 +160,6 @@ function EnhancedTableToolbar(props) {
         >
           Products
         </Typography>
-
-      {numSelected > 0 ? (
-        <Tooltip title="Delete">
-          <IconButton>
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>
-      ) : (
-        <Tooltip title="Filter list">
-          <IconButton>
-            <FilterListIcon />
-          </IconButton>
-        </Tooltip>
-      )}
     </Toolbar>
   );
 }
@@ -174,12 +168,14 @@ EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
 };
 
-export default function ProductTable({products, handleEdit}) {
+export default function ProductTable({products, handleDeleted, handleEdited}) {
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('description');
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [open, setOpen] = React.useState(false);
+  const [currentEditProduct, setCurrentEditProduct] = React.useState({});
   const dispatch = useDispatch();
 
   const handleRequestSort = (event, property) => {
@@ -240,91 +236,112 @@ export default function ProductTable({products, handleEdit}) {
     [products, order, orderBy, page, rowsPerPage],
   );
 
-  function handleEditClick(currentId) {
+  function handleDeleteClick(currentId) {
     dispatch(deleteProduct(currentId));
-    handleEdit()
+    handleDeleted()
+  }
+
+  function handleOpen(product) {
+    setCurrentEditProduct(product);
+    setOpen(true);
+  } 
+
+  function handleClose() {
+    setOpen(false);
+    console.log("hello closed")
+    handleEdited();
   }
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <Paper sx={{ width: '100%', mb: 2 }}>
-        <EnhancedTableToolbar numSelected={selected.length} />
-        <TableContainer>
-          <Table
-            sx={{ minWidth: 750 }}
-            aria-labelledby="tableTitle"
-            size={'medium'}
-          >
-            <EnhancedTableHead
-              numSelected={selected.length}
-              order={order}
-              orderBy={orderBy}
-              onSelectAllClick={handleSelectAllClick}
-              onRequestSort={handleRequestSort}
-              rowCount={products.length}
-            />
-            <TableBody>
-              {visibleRows.map((row, index) => {
-                const isItemSelected = isSelected(row.id);
-                const labelId = `enhanced-table-checkbox-${index}`;
+    <>
+      <Box sx={{ width: '100%' }}>
+        <Paper sx={{ width: '100%', mb: 2 }}>
+          <EnhancedTableToolbar numSelected={selected.length} />
+          <TableContainer>
+            <Table
+              sx={{ minWidth: 750 }}
+              aria-labelledby="tableTitle"
+              size={'medium'}
+            >
+              <EnhancedTableHead
+                numSelected={selected.length}
+                order={order}
+                orderBy={orderBy}
+                onSelectAllClick={handleSelectAllClick}
+                onRequestSort={handleRequestSort}
+                rowCount={products.length}
+              />
+              <TableBody>
+                {visibleRows.map((row, index) => {
+                  const isItemSelected = isSelected(row.id);
+                  const labelId = `enhanced-table-checkbox-${index}`;
 
-                return (
-                  <TableRow
-                    hover
-                    onClick={(event) => handleClick(event, row.id)}
-                    role="checkbox"
-                    aria-checked={isItemSelected}
-                    tabIndex={-1}
-                    key={row.id}
-                    selected={isItemSelected}
-                    sx={{ cursor: 'pointer' }}
-                  >
-                    <TableCell padding="checkbox">
-
-                    </TableCell>
-                    <TableCell
-                      component="th"
-                      id={labelId}
-                      scope="row"
-                      padding="none"
+                  return (
+                    <TableRow
+                      hover
+                      onClick={(event) => handleClick(event, row.id)}
+                      role="checkbox"
+                      aria-checked={isItemSelected}
+                      tabIndex={-1}
+                      key={row.id}
+                      selected={isItemSelected}
+                      sx={{ cursor: 'pointer' }}
                     >
-                      {row.name}
-                    </TableCell>
-                    <TableCell align="center">{row.description}</TableCell>
-                    <TableCell align="center">{row.stockAmount}</TableCell>
-                    <TableCell align="center">{row.warehouseId}</TableCell>
-                    <TableCell align="center">
-                      <Tooltip title="Delete">
-                        <IconButton onClick={() => handleEditClick(row.id)}>
-                          <DeleteIcon/>
-                        </IconButton>
-                      </Tooltip>
-                    </TableCell>
+                      <TableCell padding="checkbox">
+
+                      </TableCell>
+                      <TableCell
+                        component="th"
+                        id={labelId}
+                        scope="row"
+                        padding="none"
+                      >
+                        {row.name}
+                      </TableCell>
+                      <TableCell align="center">{row.description}</TableCell>
+                      <TableCell align="center">{row.stockAmount}</TableCell>
+                      <TableCell align="center">{row.warehouseId}</TableCell>
+                      <TableCell align="center">
+                        <Tooltip title="Edit">
+                          <IconButton>
+                            <EditIcon onClick={() => handleOpen(row)}/>
+                          </IconButton>
+                        </Tooltip>
+                      </TableCell>
+                      <TableCell align="center">
+                        <Tooltip title="Delete">
+                          <IconButton onClick={() => handleDeleteClick(row.id)}>
+                            <DeleteIcon/>
+                          </IconButton>
+                        </Tooltip>
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
+                {emptyRows > 0 && (
+                  <TableRow
+                    style={{
+                      height: (53) * emptyRows,
+                    }}
+                  >
+                    <TableCell colSpan={5} />
                   </TableRow>
-                );
-              })}
-              {emptyRows > 0 && (
-                <TableRow
-                  style={{
-                    height: (53) * emptyRows,
-                  }}
-                >
-                  <TableCell colSpan={5} />
-                </TableRow>
-              )}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
-          component="div"
-          count={products.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
-      </Paper>
-    </Box>
+                )}
+              </TableBody>
+            </Table>
+          </TableContainer>
+          <TablePagination
+            rowsPerPageOptions={[5, 10, 25]}
+            component="div"
+            count={products.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+        </Paper>
+      </Box>
+      <ProductEditModal open={open} handleClose={handleClose} product={currentEditProduct}/>
+    </>
   );
 }

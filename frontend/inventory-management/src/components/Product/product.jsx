@@ -8,17 +8,19 @@ import { useSelector, useDispatch } from 'react-redux';
 
 export default function Product () {
     const [open, setOpen] = useState(false);
-    const [edit, setEdit] = useState(false);
+    const [deleted, setDeleted] = useState(false);
+    const [edited, setEdited] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    const handleEdit = () => setEdit(!edit);
+    const handleDeleted = () => setDeleted(!deleted);
+    const handleEdited = () => setEdited(!edited);
     const dispatch = useDispatch();
     const products = useSelector((state) => state.warehouse.products);
     
     useEffect(() => {
         dispatch(fetchProducts());
 
-    }, [ dispatch, open, edit]);
+    }, [ dispatch, open, deleted, edited]);
 
 
     return (
@@ -41,7 +43,7 @@ export default function Product () {
                 </div>
                 <ProductModal open={open} handleClose={handleClose}/>
                 <div>
-                    <ProductTable products={products} handleEdit={handleEdit}/>
+                    <ProductTable products={products} handleDeleted={handleDeleted} handleEdited={handleEdited}/>
                 </div>
         </>
     )

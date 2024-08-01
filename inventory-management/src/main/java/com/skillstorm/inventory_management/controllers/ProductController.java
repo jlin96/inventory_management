@@ -56,6 +56,7 @@ public class ProductController {
     
     @PutMapping("/{id}")
     public Product update(@PathVariable int id, @Valid @RequestBody Product product) {
+        System.out.println(product.getName());
         return service.update(id, product);
     }
 

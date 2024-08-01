@@ -33,15 +33,15 @@ public class Product {
     @JsonBackReference
     private Warehouse warehouse;
 
-    // public Product() { }
+    public Product() { }
 
-    // public Product(int id, String name, String description, int stockAmount, Warehouse warehouse) {
-    //     this.id = id;
-    //     this.name = name;
-    //     this.description = description;
-    //     this.stockAmount = stockAmount;
-    //     this.warehouse = warehouse;
-    // }
+    public Product(int id, String name, String description, int stockAmount, Warehouse warehouse) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.stockAmount = stockAmount;
+        this.warehouse = warehouse;
+    }
 
     public int getId() {
         return id;

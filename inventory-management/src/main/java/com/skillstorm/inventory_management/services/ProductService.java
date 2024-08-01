@@ -54,7 +54,7 @@ public class ProductService {
 
     public Product update(int id, Product product) {
         Optional<Product> dbProduct = repo.findById(id);
-
+        System.out.println(product);
         //Error handling for if it doesn't exist
         Product foundProduct = dbProduct.get();
 
