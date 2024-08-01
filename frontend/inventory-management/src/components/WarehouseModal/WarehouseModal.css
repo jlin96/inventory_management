@@ -1,0 +1,48 @@
+.warehouse-form {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Gill Sans',
+        'Gill Sans MT',
+        Calibri,
+        'Trebuchet MS',
+        sans-serif;
+    color: black;
+    width: 100%;
+}
+
+.warehouse-form-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-weight: 600;
+    font-size: large;
+}
+
+.warehouse-form-lable {
+    font-weight: 600;
+}
+
+.warehouse-form-inputs {
+    margin: 10px 0px;
+}
+
+.warehouse-form-input {
+    margin: 0px 0px 5px 10px;
+    background-color: white;
+    border-radius: 4px;
+    color: black;
+    font-weight: 600;
+}
+
+.warehouse-form-inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.warehouse-form-button {
+    background-color: #F39C4F;
+}

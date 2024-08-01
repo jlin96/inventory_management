@@ -8,22 +8,44 @@ const initialState = {
 }
 
 //accepts type, payloadCreater (callback function that should return a promise)
-export const createWarehouse = createAsyncThunk('warehouses/createWarehouse', async () => {
+export const createWarehouse = createAsyncThunk('warehouses/createWarehouse', async (warehouse) => {
     return await fetch('http://localhost:8080/warehouses', {
         method: "POST",
         headers: {'Content-Type':'application/json',
         },
-        body: JSON.stringify({
-            "name": "Home",
-            "address": "Main Street"
-        })
-    }).then(product => product.json())
+        body: JSON.stringify(warehouse)
+    }).then(warehouse => warehouse.json())
     //doesnt work cause it is expecting a promise
     // .then(product => { 
     //     console.log("just got back")
     //     console.log(product)
     // })
-    
+})
+
+export const fetchWarehouses = createAsyncThunk('warehouses/fetchWarehouses', async () => {
+    return await fetch('http://localhost:8080/warehouses', {
+        method: "GET",
+        headers: {'Content-Type':'application/json',
+        },
+    }).then(warehouses => warehouses.json())
+})
+
+export const editWarehouse = createAsyncThunk('warehouses/editWarehouse', async (warehouse) => {
+    return await fetch(`http://localhost:8080/warehouses/${warehouse.id}`, {
+        method: "PUT",
+        headers: {
+            'Content-Type':'application/json',
+        },
+        body: JSON.stringify(warehouse)
+    }).then(warehouse => warehouse.json())
+})
+
+export const deleteWarehouse = createAsyncThunk('warehouses/deleteWarehouse', async (id) => {
+    return await fetch(`http://localhost:8080/warehouses/${id}`, {
+        method: "DELETE",
+        headers: {'Content-Type':'application/json',
+        },
+    }).then(id => id.json())
 })
 
 export const createProduct = createAsyncThunk('warehouses/createProduct', async (product) => {
@@ -54,12 +76,12 @@ export const editProduct = createAsyncThunk('warehouses/editProduct', async (pro
     }).then(product => product.json())
 })
 
-export const deleteProduct = createAsyncThunk('warehouses/deleteProducts', async (id) => {
+export const deleteProduct = createAsyncThunk('warehouses/deleteProduct', async (id) => {
     return await fetch(`http://localhost:8080/products/${id}`, {
         method: "DELETE",
         headers: {'Content-Type':'application/json',
         },
-    }).then(products => products.json())
+    }).then(id => id.json())
 })
 
 
@@ -84,6 +106,26 @@ export const warehouseSlice = createSlice({
                 //immutability
                 // state.warehouses[action.payload.id] = action.payload
                 // return state.warehouses;
+            })
+            .addCase(fetchWarehouses.fulfilled, (state, action) => {
+                return {
+                    ...state,
+                    warehouses: action.payload
+                }
+            })
+            .addCase(editWarehouse.fulfilled, (state, action) => {
+                console.log(action.payload)
+                return {
+                    ...state,
+                    products: {
+                        ...state.warehouses,
+                        [action.payload.id] : action.payload
+                    }
+                }
+            })
+            .addCase(deleteWarehouse.fulfilled, (state, action) => {
+                state.warehouses = state.warehouses.filter((product) => product.id !== action.payload.id);
+                return state;
             })
             .addCase(createProduct.fulfilled, (state, action) => {
                 return {

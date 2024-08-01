@@ -45,8 +45,8 @@ export default function ProductModal({open, handleClose}) {
                 "id": warehouse
             }
         }
-        dispatch(createProduct(productBody));
-        handleClose();
+        dispatch(createProduct(productBody)).then(() => handleClose());
+        // dispatch(createWarehouse(warehouseBody)).then(() => handleClose());
     }
 
 

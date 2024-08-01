@@ -18,9 +18,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { visuallyHidden } from '@mui/utils';
 
-import {deleteProduct} from '../../slices/warehouseSlice'
+import {deleteWarehouse} from '../../slices/warehouseSlice'
 import { useDispatch } from 'react-redux';
-import ProductEditModal from '../ProductEditModal/ProductEditModal';
+import WarehouseEditModal from '../WarehouseEditModal/WarehouseEditModal';
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -62,22 +62,10 @@ const headCells = [
     label: 'Name',
   },
   {
-    id: 'description',
+    id: 'address',
     numeric: true,
     disablePadding: false,
-    label: 'Description',
-  },
-  {
-    id: 'amount',
-    numeric: true,
-    disablePadding: false,
-    label: 'Amount',
-  },
-  {
-    id: 'warehouse',
-    numeric: true,
-    disablePadding: false,
-    label: 'Warehouse',
+    label: 'Address',
   },
   {
     id: 'placeholder',
@@ -157,7 +145,7 @@ function EnhancedTableToolbar(props) {
           id="tableTitle"
           component="div"
         >
-          Products
+          Warehouses
         </Typography>
     </Toolbar>
   );
@@ -167,14 +155,14 @@ EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
 };
 
-export default function ProductTable({products, handleDeleted, handleEdited}) {
+export default function ProductTable({warehouses, handleDeleted, handleEdited}) {
   const [order, setOrder] = React.useState('asc');
-  const [orderBy, setOrderBy] = React.useState('description');
+  const [orderBy, setOrderBy] = React.useState('address');
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [open, setOpen] = React.useState(false);
-  const [currentEditProduct, setCurrentEditProduct] = React.useState({});
+  const [currentEditWarehouse, setCurrentEditWarehouse] = React.useState({});
   const dispatch = useDispatch();
 
   const handleRequestSort = (event, property) => {
@@ -185,7 +173,7 @@ export default function ProductTable({products, handleDeleted, handleEdited}) {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelected = products.map((n) => n.id);
+      const newSelected = warehouses.map((n) => n.id);
       setSelected(newSelected);
       return;
     }
@@ -224,24 +212,24 @@ export default function ProductTable({products, handleDeleted, handleEdited}) {
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - products.length) : 0;
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - warehouses.length) : 0;
   
   const visibleRows = React.useMemo(
     () =>
-      stableSort(Array.from(products), getComparator(order, orderBy)).slice(
+      stableSort(Array.from(warehouses), getComparator(order, orderBy)).slice(
         page * rowsPerPage,
         page * rowsPerPage + rowsPerPage,
       ),
-    [products, order, orderBy, page, rowsPerPage],
+    [warehouses, order, orderBy, page, rowsPerPage],
   );
 
   function handleDeleteClick(currentId) {
-    dispatch(deleteProduct(currentId));
+    dispatch(deleteWarehouse(currentId));
     handleDeleted()
   }
 
-  function handleOpen(product) {
-    setCurrentEditProduct(product);
+  function handleOpen(warehouse) {
+    setCurrentEditWarehouse(warehouse);
     setOpen(true);
   } 
 
@@ -267,7 +255,7 @@ export default function ProductTable({products, handleDeleted, handleEdited}) {
                 orderBy={orderBy}
                 onSelectAllClick={handleSelectAllClick}
                 onRequestSort={handleRequestSort}
-                rowCount={products.length}
+                rowCount={warehouses.length}
               />
               <TableBody>
                 {visibleRows.map((row, index) => {
@@ -296,9 +284,7 @@ export default function ProductTable({products, handleDeleted, handleEdited}) {
                       >
                         {row.name}
                       </TableCell>
-                      <TableCell align="center">{row.description}</TableCell>
-                      <TableCell align="center">{row.stockAmount}</TableCell>
-                      <TableCell align="center">{row.warehouseId}</TableCell>
+                      <TableCell align="center">{row.address}</TableCell>
                       <TableCell align="center">
                         <Tooltip title="Edit">
                           <IconButton>
@@ -331,7 +317,7 @@ export default function ProductTable({products, handleDeleted, handleEdited}) {
           <TablePagination
             rowsPerPageOptions={[5, 10, 25]}
             component="div"
-            count={products.length}
+            count={warehouses.length}
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}
@@ -339,7 +325,7 @@ export default function ProductTable({products, handleDeleted, handleEdited}) {
           />
         </Paper>
       </Box>
-      <ProductEditModal open={open} handleClose={handleClose} product={currentEditProduct}/>
+      <WarehouseEditModal open={open} handleClose={handleClose} warehouse={currentEditWarehouse}/>
     </>
   );
 }

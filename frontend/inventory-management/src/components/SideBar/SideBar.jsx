@@ -3,7 +3,7 @@ import SideBarItems from '../SideBarItems/SideBarItems';
 
 export default function SideBar() {
     //can be extracted into enum when more menu items
-    let menuItems = ["Warehouses", "Products"]
+    let menuItems = ["Home", "Warehouses", "Products"]
 
     let mappedItems = menuItems.map((name, idx) => {
         return (
