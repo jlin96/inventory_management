@@ -60,7 +60,8 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable int id) {
-        service.deleteById(id);
+    public int deleteById(@PathVariable int id) {
+        service.deleteById(id); 
+        return id;
     }
 }

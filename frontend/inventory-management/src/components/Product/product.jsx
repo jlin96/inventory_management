@@ -8,15 +8,17 @@ import { useSelector, useDispatch } from 'react-redux';
 
 export default function Product () {
     const [open, setOpen] = useState(false);
+    const [edit, setEdit] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-
+    const handleEdit = () => setEdit(!edit);
     const dispatch = useDispatch();
     const products = useSelector((state) => state.warehouse.products);
-
+    
     useEffect(() => {
         dispatch(fetchProducts());
-    }, [ dispatch]);//rerender off dispatch or products?
+
+    }, [ dispatch, open, edit]);
 
 
     return (
@@ -30,7 +32,6 @@ export default function Product () {
                             Dashboard / Products
                         </span>
                     </div>
-                    {/* <button className='product-upload-button' onClick={() => dispatch(createWarehouse())}> */}
                     <button className='product-upload-button' onClick={handleOpen}>
                         <UploadIcon />
                         <div>
@@ -40,7 +41,7 @@ export default function Product () {
                 </div>
                 <ProductModal open={open} handleClose={handleClose}/>
                 <div>
-                    <ProductTable products={products}/>
+                    <ProductTable products={products} handleEdit={handleEdit}/>
                 </div>
         </>
     )

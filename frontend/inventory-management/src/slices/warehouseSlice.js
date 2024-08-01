@@ -43,6 +43,15 @@ export const fetchProducts = createAsyncThunk('warehouses/fetchProducts', async 
     }).then(products => products.json())
 })
 
+export const deleteProduct = createAsyncThunk('warehouses/deleteProducts', async (id) => {
+    return await fetch(`http://localhost:8080/products/${id}`, {
+        method: "DELETE",
+        headers: {'Content-Type':'application/json',
+        },
+    }).then(products => products.json())
+})
+
+
 export const warehouseSlice = createSlice({
     name: 'warehouses',
     initialState,
@@ -79,6 +88,10 @@ export const warehouseSlice = createSlice({
                     ...state,
                     products: action.payload
                 }
+            })
+            .addCase(deleteProduct.fulfilled, (state, action) => {
+                state.products = state.products.filter((product) => product.id !== action.payload.id);
+                return state;
             })
     }
 })

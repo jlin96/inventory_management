@@ -18,31 +18,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 
-function createData(id, name, calories, fat, carbs) {
-  return {
-    id,
-    name,
-    calories,
-    fat,
-    carbs,
-  };
-}
-
-const rows = [
-  createData(1, 'Cupcake', 305, 3.7, 67),
-  createData(2, 'Donut', 452, 25.0, 51),
-  createData(3, 'Eclair', 262, 16.0, 24),
-  createData(4, 'Frozen yoghurt', 159, 6.0, 24),
-  createData(5, 'Gingerbread', 356, 16.0, 49),
-  createData(6, 'Honeycomb', 408, 3.2, 87, 6.5),
-  createData(7, 'Ice cream sandwich', 237, 9.0, 37),
-  createData(8, 'Jelly Bean', 375, 0.0, 94),
-  createData(9, 'KitKat', 518, 26.0, 65),
-  createData(10, 'Lollipop', 392, 0.2, 98),
-  createData(11, 'Marshmallow', 318, 0, 81),
-  createData(12, 'Nougat', 360, 19.0, 9),
-  createData(13, 'Oreo', 437, 18.0, 63),
-];
+import {deleteProduct} from '../../slices/warehouseSlice'
+import { useDispatch } from 'react-redux';
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -60,8 +37,11 @@ function getComparator(order, orderBy) {
     : (a, b) => -descendingComparator(a, b, orderBy);
 }
 
+// Since 2020 all major browsers ensure sort stability with Array.prototype.sort().
+// stableSort() brings sort stability to non-modern browsers (notably IE11). If you
+// only support modern browsers you can replace stableSort(exampleArray, exampleComparator)
+// with exampleArray.slice().sort(exampleComparator)
 function stableSort(array, comparator) {
-  console.log(array)
   const stabilizedThis = array.map((el, index) => [el, index]);
   stabilizedThis.sort((a, b) => {
     const order = comparator(a[0], b[0]);
@@ -82,7 +62,7 @@ const headCells = [
   },
   {
     id: 'description',
-    numeric: false,
+    numeric: true,
     disablePadding: false,
     label: 'Description',
   },
@@ -100,7 +80,7 @@ const headCells = [
   },
   {
     id: 'placeholder',
-    numeric: false,
+    numeric: true,
     disablePadding: false,
     label: '',
   },
@@ -194,18 +174,13 @@ EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
 };
 
-export default function ProductTable({products}) {
+export default function ProductTable({products, handleEdit}) {
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('description');
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-
-  // let rows = products
-
-  // for(let product in products) {
-  //   // row.push
-  // }
+  const dispatch = useDispatch();
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -215,7 +190,7 @@ export default function ProductTable({products}) {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelected = rows.map((n) => n.id);
+      const newSelected = products.map((n) => n.id);
       setSelected(newSelected);
       return;
     }
@@ -254,16 +229,21 @@ export default function ProductTable({products}) {
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
-
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - products.length) : 0;
+  
   const visibleRows = React.useMemo(
     () =>
-      stableSort(products, getComparator(order, orderBy)).slice(
+      stableSort(Array.from(products), getComparator(order, orderBy)).slice(
         page * rowsPerPage,
         page * rowsPerPage + rowsPerPage,
       ),
     [products, order, orderBy, page, rowsPerPage],
   );
+
+  function handleEditClick(currentId) {
+    dispatch(deleteProduct(currentId));
+    handleEdit()
+  }
 
   return (
     <Box sx={{ width: '100%' }}>
@@ -281,7 +261,7 @@ export default function ProductTable({products}) {
               orderBy={orderBy}
               onSelectAllClick={handleSelectAllClick}
               onRequestSort={handleRequestSort}
-              rowCount={rows.length}
+              rowCount={products.length}
             />
             <TableBody>
               {visibleRows.map((row, index) => {
@@ -312,11 +292,11 @@ export default function ProductTable({products}) {
                     </TableCell>
                     <TableCell align="center">{row.description}</TableCell>
                     <TableCell align="center">{row.stockAmount}</TableCell>
-                    <TableCell align="center">{row.warehouse}</TableCell>
+                    <TableCell align="center">{row.warehouseId}</TableCell>
                     <TableCell align="center">
                       <Tooltip title="Delete">
-                        <IconButton>
-                          <DeleteIcon />
+                        <IconButton onClick={() => handleEditClick(row.id)}>
+                          <DeleteIcon/>
                         </IconButton>
                       </Tooltip>
                     </TableCell>
@@ -338,7 +318,7 @@ export default function ProductTable({products}) {
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
-          count={rows.length}
+          count={products.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}

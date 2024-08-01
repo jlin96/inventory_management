@@ -27,6 +27,7 @@ public class ProductService {
     }
 
     public List<ProductDto> findAll() {
+        //returns iterable or list
         List<Product> dbProducts = repo.findAll();
         
         List<ProductDto> productDto = dbProducts.stream().map(mapper::toDto).collect(Collectors.toList());

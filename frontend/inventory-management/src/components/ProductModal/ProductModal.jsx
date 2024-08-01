@@ -46,6 +46,7 @@ export default function ProductModal({open, handleClose}) {
             }
         }
         dispatch(createProduct(productBody));
+        handleClose();
     }
 
 
