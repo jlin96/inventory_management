@@ -17,7 +17,7 @@ int id - Primary key\
 String name - Name of Warehouse\
 String address - Warehouse address\
 
-Both tables have controllers with the corresponding routes: GET/POST/PUT/DELETE\
+Both tables have controllers with the corresponding routes: GET/POST/PUT/DELETE
 
 TODO:\
 Create up extra routes/services not needed\
