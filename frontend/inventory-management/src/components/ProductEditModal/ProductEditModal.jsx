@@ -81,8 +81,8 @@ export default function ProductEditModal({open, handleClose, product={}}) {
                                     <label className="product-form-lable" htmlFor="product-name">Warehouse: </label>
                                     <input className="product-form-input" type="text" placeholder={product.warehouseId} ref={warehouseRef}/>
                                 </div>
-                                </div>
-                                <button className="product-form-button" type='submit'>Submit</button>
+                            </div>
+                            <button className="product-form-button" type='submit'>Submit</button>
                         </form>
                     </Box>
                 </Modal>
