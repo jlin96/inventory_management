@@ -30,6 +30,7 @@ export const fetchWarehouses = createAsyncThunk('warehouses/fetchWarehouses', as
     }).then(warehouses => warehouses.json())
 })
 
+//can't pass 2 params
 export const editWarehouse = createAsyncThunk('warehouses/editWarehouse', async (warehouse) => {
     return await fetch(`http://localhost:8080/warehouses/${warehouse.id}`, {
         method: "PUT",
@@ -65,7 +66,6 @@ export const fetchProducts = createAsyncThunk('warehouses/fetchProducts', async 
     }).then(products => products.json())
 })
 
-//why cant i pass 2 params?
 export const editProduct = createAsyncThunk('warehouses/editProduct', async (product) => {
     return await fetch(`http://localhost:8080/products/${product.id}`, {
         method: "PUT",

@@ -54,15 +54,11 @@ public class ProductService {
 
     public Product update(int id, Product product) {
         Optional<Product> dbProduct = repo.findById(id);
-        System.out.println(product);
-        //Error handling for if it doesn't exist
         Product foundProduct = dbProduct.get();
 
         foundProduct.setDescription(product.getDescription());
         foundProduct.setName(product.getName());
 
-        //Might be better to have this as a seperate service?
-        //No need to set all properties again if just updating stock?
         foundProduct.setStockAmount(product.getStockAmount());
 
         return repo.save(foundProduct);
