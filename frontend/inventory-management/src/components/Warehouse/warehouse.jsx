@@ -1,7 +1,7 @@
 import UploadIcon from '@mui/icons-material/Upload';
 import WarehouseModal from '../WarehouseModal/WarehouseModal'
 import WarehouseTable from './WarehouseTable'
-import './warehouse.css';
+import './Warehouse.css';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {fetchWarehouses} from '../../slices/warehouseSlice'

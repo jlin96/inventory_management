@@ -1,4 +1,4 @@
-import './product.css'
+import './Product.css'
 import UploadIcon from '@mui/icons-material/Upload';
 import ProductTable from './ProductTable';
 import ProductModal from '../ProductModal/ProductModal';

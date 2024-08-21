@@ -2,6 +2,7 @@ import SideBar from "../../components/SideBar/SideBar";
 import MainContent from "../../components/MainContent/MainContent";
 import './HomePage.css';
 
+
 export default function HomePage() {
     return (
         <>
@@ -11,7 +12,9 @@ export default function HomePage() {
                 </div>
                 <div className="main-content">
                     <MainContent className="main-content"/>
+
                 </div>
+
             </div>
         </>
     )
