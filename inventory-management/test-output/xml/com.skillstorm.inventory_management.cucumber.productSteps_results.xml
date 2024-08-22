@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestNGTest-e1e6b7fc-4684-4fb4-9a65-6a69693c7f81"
+           tests="1"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="0.090">
+    <properties></properties>
+
+
+
+            <testcase
+                name="verifyTitle"
+                time="0.090"
+                classname="com.skillstorm.inventory_management.cucumber.productSteps">
+            </testcase>
+</testsuite>
