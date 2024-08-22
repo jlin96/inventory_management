@@ -27,22 +27,22 @@ public class productSteps {
     @Test
     public void verifyTitle(){
         String title = driver.getTitle();
-        assertEquals("Vite + React", title); // Title eventuallu should reflect Jesse's Management
+        assertEquals("Vite + React", title); // Title eventually should reflect Jesse's Management
     }
 
     @Given("I am on the homepage")
     public void i_am_on_the_homepage(){
-        System.out.println("Given test here...");
+        System.out.println("Todo ... Given here...");
     }
 
     @When("I select the product tab")
     public void i_select_the_product_tab(){
-        System.out.println("I am in the When statement...");
+        System.out.println("Todo ... When here");
     }
 
     @Then("I should see the product form")
     public void i_should_see_the_product_form(){
-        System.out.println("The Then statement is here...");
+        System.out.println("Todo... Then statement is here...");
     }
 
     @AfterTest
