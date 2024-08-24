@@ -25,7 +25,7 @@ pipeline {
         stage('Build backend'){
             steps{
                 sh "echo this is the backend build"
-                sh "cd inventory-management && mvn install"
+                sh "cd inventory-management && mvn install && ls target/"
             }
         }
     }
