@@ -21,6 +21,11 @@ pipeline {
                     }
                 }
             }
+        }
+        stage('Build backend'){
+            steps{
+                sh "echo this is the backend build"
+            }
         } 
     }
 }
