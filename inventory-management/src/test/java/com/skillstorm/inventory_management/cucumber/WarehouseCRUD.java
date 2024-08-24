@@ -3,6 +3,8 @@ package com.skillstorm.inventory_management.cucumber;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -25,6 +27,8 @@ public class WarehouseCRUD {
         ChromeOptions options = new ChromeOptions();
         driver = new ChromeDriver(options);
         this.driver = new ChromeDriver();
+        this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         this.warehouse = new Warehouse(driver);
     }
 
