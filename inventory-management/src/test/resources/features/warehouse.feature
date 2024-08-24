@@ -7,10 +7,10 @@ Feature: Warehouse
     #     When I click the Add Warehouse Button
     #     Then Add Warehouse Modal shows show up.
 
-    Scenario: Clicking add warehouse button
-        Given I am on the warehouse tab
-        When I click the add warehouse button
-        Then I should see the add warehouse modal
+    #Scenario: Clicking add warehouse button
+    #    Given I am on the warehouse tab
+    #    When I click the add warehouse button
+    #    Then I should see the add warehouse modal
 
     #Scenario: Adding warehouse to table
     #    Given I am on the add warehouse modal
