@@ -28,5 +28,10 @@ pipeline {
                 sh "cd inventory-management && mvn install && ls target/"
             }
         }
+        stage('Test Backend'){
+            steps{
+                sh "cd inventory-management && mvn test"
+            }
+        }
     }
 }
