@@ -22,11 +22,5 @@ pipeline {
                 }
             }
         }
-        stage('Building backend'){
-            sh "echo Building backend"
-            steps{
-                sh "cd inventory-management && mvn clean install && ls target/"
-            }
-        } 
     }
 }
