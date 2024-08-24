@@ -39,8 +39,6 @@ pipeline {
                   withAWS(region: 'us-east-1', credentials: 'AWS_CREDENTIALS'){
                         sh 'pwd'
                         sh "aws s3 cp inventory-management/target/inventory-management-0.0.1-SNAPSHOT.jar s3://team-6-backend-jenkins"
-                        sh "echo 'aws elasticbeanstalk create-application-version --application-name team-6-app --version-label 0.0.3 --source-bundle S3Bucket=\"team-6-backend-jenkins\",S3Key=\"inventory-management-0.0.1-SNAPSHOT.jar\"'"
-                        sh "ech 'aws elasticbeanstalk update-environment --environment-name Team-6-app-env-3 --version-label 0.0.3'"
                     }  
                 }   
             }
