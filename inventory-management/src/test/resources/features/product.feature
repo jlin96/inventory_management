@@ -6,4 +6,6 @@ Scenario: Successfully navigate to the product table
     When I select the product tab
     Then I should see the product table
 
-Scenario: 
+Scenario: Successfully navigate to the product form
+    Given I am on the product page
+    When I click the 
