@@ -1,17 +1,35 @@
 package com.skillstorm.inventory_management.selenium;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.time.Duration;
+
+import org.checkerframework.checker.units.qual.t;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-// comment
 public class Product {
     
     private WebDriver driver;
-    private static final String url = "http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com";
 
-    @FindBy(xpath = "//*[contains(text(), 'Products')]")
+    @FindBy(xpath = "//div[contains(@class, 'side-bar-items') and text()='Products']")
     private WebElement productTab;
+
+    @FindBy(xpath = "//div[@id='tableTitle' and text()='Products']")
+    private WebElement tableTitle;
+
+    @FindBy(xpath = "//div[contains(@class,'home-title') and text() = 'HOME']")
+    private WebElement homeTitle;
+     
+    public Product(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
+
+    public String verifyTitle(){
+        return this.driver.getTitle();
+    }
 
     public void clickProductTab(){
         try {
@@ -21,4 +39,31 @@ public class Product {
         }
         productTab.click();
     }
+
+    public void quitDriver(){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.quit();
+    }
+
+    public String getTableTitle(){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        if (tableTitle != null)
+            return tableTitle.getText();
+        return null;
+    }
+
+    public String getHomeTitle(){
+        if(homeTitle != null)
+        return homeTitle.getText();
+        return null;
+    }
+
 }

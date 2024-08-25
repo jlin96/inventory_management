@@ -2,14 +2,20 @@ package com.skillstorm.inventory_management.cucumber;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.concurrent.TimeUnit;
+
 //import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.*;
 
 import com.skillstorm.inventory_management.selenium.Product;
+import java.time.Duration;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -18,45 +24,43 @@ public class productSteps {
 
     private Product product;
     private WebDriver driver;
-    private static final String baseUrl = "http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com";
-    WebElement e;
+    private static final String url = "http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com";
 
-    @BeforeMethod
+    @Before
     public void setup(){
-        driver = new ChromeDriver();
-        driver.get(baseUrl);
+        this.driver = new ChromeDriver();
+        driver.get(url);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        this.product = new Product(driver);
     }
 
     @Test
-    public void verifyTitle(){
-        String title = driver.getTitle();
-        assertEquals("Jesse's Management", title); // Title eventually should reflect Jesse's Management
+    public void simpleTest(){
+        //assertEquals("Jesse's Mangement", product.verifyTitle());
     }
-
+    /* Successfully navigate to the Product Table Scenario Start*/
     @Given("I am on the homepage")
     public void i_am_on_the_homepage(){
-        System.out.println("Todo ... Given here...");
+        //assertEquals("Jesse's Mangement", product.verifyTitle());
+        assertEquals("HOME", product.getHomeTitle());
     }
 
     @When("I select the product tab")
     public void i_select_the_product_tab(){
-        System.out.println("Todo ... When here");
+        System.out.println("Selecting product tab from side menu...");
         product.clickProductTab();
     }
 
-    @Then("I should see the product form")
-    public void i_should_see_the_product_form(){
-        System.out.println("Todo... Then statement is here...");
+    @Then("I should see the product table")
+    public void i_should_see_the_product_table(){
+        System.out.println("Comparing table title to test if it matches Products...");
+        //assertEquals("Jesse's Mangement", product.verifyTitle());
+        assertEquals("Products", product.getTableTitle());
     }
+    /* Successfully navigate to the Product Table Scenario End*/
 
-    @AfterTest
+    @After
     public void teardown(){
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        driver.quit();
+       product.quitDriver();
     }
-
 }
