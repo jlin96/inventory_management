@@ -12,7 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 public class Warehouse {
 
     private WebDriver driver;
-    private static final String url = "http://team-6-frontend.s3-website-us-east-1.amazonaws.com/";
+    private static final String url = "http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com";
 
     @FindBy(xpath = "//*[contains(text(), 'Warehouses')]")
     private WebElement warehouseTab;

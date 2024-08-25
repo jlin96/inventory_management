@@ -27,8 +27,6 @@ public class WarehouseCRUD {
         ChromeOptions options = new ChromeOptions();
         driver = new ChromeDriver(options);
         this.driver = new ChromeDriver();
-        this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         this.warehouse = new Warehouse(driver);
     }
 
