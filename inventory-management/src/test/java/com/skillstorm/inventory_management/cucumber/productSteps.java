@@ -30,8 +30,8 @@ public class productSteps {
 
     @Before
     public void setup(){
-        //this.driver = new ChromeDriver();
-        this.driver = new FirefoxDriver();
+        this.driver = new ChromeDriver();
+        //this.driver = new FirefoxDriver();
         driver.get(url);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         this.product = new Product(driver);
