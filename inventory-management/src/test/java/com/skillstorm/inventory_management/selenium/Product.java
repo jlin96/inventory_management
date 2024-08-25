@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-// Contains selenium code for test
+// Contains selenium code for test cases
 public class Product {
     
     private WebDriver driver;
