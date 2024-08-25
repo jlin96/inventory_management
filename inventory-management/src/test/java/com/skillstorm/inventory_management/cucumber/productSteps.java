@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.*;
 
@@ -28,7 +29,8 @@ public class productSteps {
 
     @Before
     public void setup(){
-        this.driver = new ChromeDriver();
+        //this.driver = new ChromeDriver();
+        this.driver = new EdgeDriver();
         driver.get(url);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         this.product = new Product(driver);
