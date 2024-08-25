@@ -4,13 +4,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.concurrent.TimeUnit;
 
-//import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.autoconfigure.metrics.MetricsProperties.System;
 import org.testng.annotations.*;
 
 import com.skillstorm.inventory_management.selenium.Product;
@@ -28,6 +28,7 @@ public class productSteps {
     private WebDriver driver;
     private static final String url = "http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com";
 
+    
     @Before
     public void setup(){
 //        //System.setProperty("webdriver.chrome.driver", "linuxchromedriver");
@@ -51,20 +52,40 @@ public class productSteps {
 
     @When("I select the product tab")
     public void i_select_the_product_tab(){
-        System.out.println("Selecting product tab from side menu...");
+        //System.out.println("Selecting product tab from side menu...");
         product.clickProductTab();
     }
 
     @Then("I should see the product table")
     public void i_should_see_the_product_table(){
-        System.out.println("Comparing table title to test if it matches Products...");
+        //System.out.println("Comparing table title to test if it matches Products...");
         //assertEquals("Jesse's Mangement", product.verifyTitle());
         assertEquals("Products", product.getTableTitle());
     }
+    /*--------------------------------------------------------*/
     /* Successfully navigate to the Product Table Scenario End*/
+    /*--------------------------------------------------------*/
 
+    @Given("I am on the product page")
+    public void i_am_on_the_product_page(){
+        //System.out.println("Given i am on the product page i should see the product table")
+        assertEquals("HOME", product.getHomeTitle());
+        product.clickProductTab();
+        assertEquals("Products", product.getTableTitle());
+    }
 
+    @When("I click the Add Product button")
+    public void i_click_the_Add_Product_button(){
     
+        product.clickAddProductbutton();
+    }
+
+    @Then("I should see the product form")
+    public void i_should_see_the_product_form(){
+        assertEquals(true, product.isProductForm());
+        //System.out.println("todo... then statement...");
+    }
+
     @After
     public void teardown(){
        product.quitDriver();

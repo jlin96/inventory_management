@@ -8,4 +8,5 @@ Scenario: Successfully navigate to the product table
 
 Scenario: Successfully navigate to the product form
     Given I am on the product page
-    When I click the 
+    When I click the Add Product button
+    Then I should see the product form
