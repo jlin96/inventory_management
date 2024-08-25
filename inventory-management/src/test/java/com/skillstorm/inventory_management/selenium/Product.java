@@ -1,14 +1,13 @@
 package com.skillstorm.inventory_management.selenium;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.time.Duration;
 
-import org.checkerframework.checker.units.qual.t;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+// Contains selenium code for test
 public class Product {
     
     private WebDriver driver;
