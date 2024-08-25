@@ -30,6 +30,7 @@ public class productSteps {
 
     @Before
     public void setup(){
+        //System.setProperty("webdriver.chrome.driver", "linuxchromedriver");
         this.driver = new ChromeDriver();
         //this.driver = new FirefoxDriver();
         driver.get(url);
