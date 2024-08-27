@@ -8,6 +8,21 @@ pipeline {
                 sh "cd frontend && cd inventory-management && npm install && npm run build"
             }
         }
+        stage('Sonar Cloud test'){
+            steps{
+                withSonarQubeEnv('SonarCloud') {
+...
+	npx sonar-scanner \
+      -Dsonar.projectKey=jlin96_inventory-management-frontend \
+      -Dsonar.projectName=inventory_management_frontend \
+      -Dsonar.sources=src \
+      -Dsonar.exclusions=**/__tests__/**,src/test/** \
+      -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+...
+}
+            }
+
+        }
         stage('Deploy Frontend'){
             steps {
                 script{ 
