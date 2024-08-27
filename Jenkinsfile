@@ -15,17 +15,14 @@ pipeline {
                 dir('frontend/inventory-management') {
 
                     withSonarQubeEnv('SonarCloud') {
-                        ...
-                        npm install
-                            npm run build
-                            npm run test -- --coverage
-	                    npx sonar-scanner \
+                    sh"
+	                 npx sonar-scanner \
                         -Dsonar.projectKey=jlin96_inventory-management-frontend \
                         -Dsonar.projectName=inventory-management-frontend \
                         -Dsonar.sources=src \
                         -Dsonar.exclusions=**/__tests__/**,src/test/** \
                         -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
-                        ...
+                        "
                     }
                 }
             }
