@@ -12,7 +12,7 @@ pipeline {
         stage('SonarScanner Frontend'){
             steps{
 
-                dir('inventory-management'){
+                
 
                     withSonarQubeEnv('SonarCloud') {
                         ...
@@ -24,7 +24,7 @@ pipeline {
                         -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
                         ...
                     }
-                }
+                
             }
         }
         stage('Deploy Frontend'){
