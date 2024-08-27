@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 // Contains selenium code for test cases for test purpose
+// added just for testing
 public class Product {
     
     private WebDriver driver;
