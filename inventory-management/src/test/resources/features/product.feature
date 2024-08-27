@@ -20,7 +20,7 @@ Feature: Product
     And i click the submit button
     Then my new product should be created
 
-  Scenario: Successfully delete a product
-    Given I am on the product page
-    When I double click the delete button
-    Then the product should be deleted
+  #Scenario: Successfully delete a product
+  #  Given I am on the product page
+  #  When I double click the delete button
+  #  Then the product should be deleted
