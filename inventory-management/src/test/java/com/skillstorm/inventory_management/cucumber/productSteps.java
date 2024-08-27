@@ -37,10 +37,7 @@ public class productSteps {
 
         ChromeOptions option = new ChromeOptions();
         option.addArguments("--headless=new");
-
-        //System.setProperty("webdriver.chrome.driver", "linuxchromedriver");
         this.driver = new ChromeDriver(option);
-        //this.driver = new FirefoxDriver();
         driver.get(url);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         this.product = new Product(driver);
