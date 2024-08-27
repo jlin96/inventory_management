@@ -16,6 +16,9 @@ pipeline {
 
                     withSonarQubeEnv('SonarCloud') {
                         ...
+                        npm install
+                            npm run build
+                            npm run test -- --coverage
 	                    npx sonar-scanner \
                         -Dsonar.projectKey=jlin96_inventory-management-frontend \
                         -Dsonar.projectName=inventory-management-frontend \
