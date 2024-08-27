@@ -37,6 +37,10 @@ pipeline {
         stage('Cloud backend test'){
             steps{
                 withSonarQubeEnv('SonarCloud') {
+
+                        dir('inventory-management') {
+
+                        sh 'mvn clean verify -Pcoverage -Dspring.profiles.active=build'
                         sh '''
                             mvn sonar:sonar \
                             -Dsonar.projectKey=jlin96_inventory_management \
@@ -44,7 +48,7 @@ pipeline {
                             -Dsonar.java.binaries=target/classes \
                             -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
                         '''
-                }
+                }   }
             }
         }
         stage('Deploy Backend'){
