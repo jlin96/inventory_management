@@ -3,6 +3,8 @@ package com.skillstorm.inventory_management.cucumber;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -42,7 +44,7 @@ public class WarehouseCRUD {
     public void iShouldSeeTheAddWarehouseModal() {
         assertTrue(warehouse.onForm());
     }
-
+    
     @Given("I am on the add warehouse modal")
     public void iAmOnTheAddWarehouseModal() {
         warehouse.get();
@@ -69,14 +71,15 @@ public class WarehouseCRUD {
     public void iShouldSeeTheEditWarehouseModal() {
         assertTrue(warehouse.onForm());
     }
-
+    
     @After("@warehouse")
     public void after() {
         if (this.driver != null) {
             this.driver.quit();
         }
     }
-
+    
+    
     @Given("I am on the edit warehouse modal")
     public void iAmOnTheEditWarehouseModal() {
         warehouse.get();
@@ -84,12 +87,12 @@ public class WarehouseCRUD {
         warehouse.editInputs();
 
     }
-
+    
     @Then("I should see the edited warehouse show up on the table")
     public void iShouldSeeTheEditedWarehouseShowUpOnTheTable() {
         assertTrue(warehouse.hasEditedWarehouse());
     }
-
+    
     // @When("I click the delete icon on a warehouse row")
     // public void iClickTheDeleteIconOnAWarehouseRow() {
     //     warehouse.clickDelete();
@@ -100,5 +103,4 @@ public class WarehouseCRUD {
     //     assertFalse(warehouse.hasEditedWarehouse());
     // }
 
-    
 }
