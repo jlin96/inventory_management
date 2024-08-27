@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +34,12 @@ public class productSteps {
     
     @Before
     public void setup(){
+
+        ChromeOptions option = new ChromeOptions();
+        option.addArguments("--headless=new");
+
         //System.setProperty("webdriver.chrome.driver", "linuxchromedriver");
-        this.driver = new ChromeDriver();
+        this.driver = new ChromeDriver(option);
         //this.driver = new FirefoxDriver();
         driver.get(url);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));

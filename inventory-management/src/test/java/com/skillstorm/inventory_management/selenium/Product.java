@@ -75,7 +75,6 @@ public class Product {
     }
 
 
-
     public void quitDriver(){
         try {
             Thread.sleep(1000);
