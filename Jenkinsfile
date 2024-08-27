@@ -11,8 +11,8 @@ pipeline {
 
         stage('SonarScanner Frontend'){
             steps{
-                def directory = "frontend/inventory-management"
-                dir(directory){
+
+                dir('frontend\inventory-management'){
 
                     withSonarQubeEnv('SonarCloud') {
                         ...
