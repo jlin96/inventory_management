@@ -2,12 +2,6 @@
 
 Feature: Warehouse
 
-<<<<<<< HEAD
-    Scenario: Clicking add warehouse button
-        Given I am on the warehouse tab
-        When I click the add warehouse button
-        Then I should see the add warehouse modal
-=======
     # Scenario: Clicking warehouse tab
     #     Given I am on the Home Tab
     #     When I click the Add Warehouse Button
@@ -17,7 +11,6 @@ Feature: Warehouse
     #    Given I am on the warehouse tab
     #    When I click the add warehouse button
     #    Then I should see the add warehouse modal
->>>>>>> 0fd4f1b44734a7c623465f7682ed7f34c6df443d
 
     #Scenario: Adding warehouse to table
     #    Given I am on the add warehouse modal
