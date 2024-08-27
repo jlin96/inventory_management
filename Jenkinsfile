@@ -9,7 +9,6 @@ pipeline {
             }
         }
     
-    
         stage('Deploy Frontend'){
             steps {
                 script{ 
