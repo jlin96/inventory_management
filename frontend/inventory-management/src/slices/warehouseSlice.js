@@ -9,7 +9,7 @@ const initialState = {
 
 //accepts type, payloadCreater (callback function that should return a promise)
 export const createWarehouse = createAsyncThunk('warehouses/createWarehouse', async (warehouse) => {
-    return await fetch('http://localhost:8080/warehouses', {
+    return await fetch('http://team-6-app-env-1.eba-ee7csmcw.us-east-1.elasticbeanstalk.com/warehouses', {
         method: "POST",
         headers: {'Content-Type':'application/json',
         },
@@ -22,16 +22,21 @@ export const createWarehouse = createAsyncThunk('warehouses/createWarehouse', as
     // })
 })
 
+/* http://team-6-app-env-1.eba-ee7csmcw.us-east-1.elasticbeanstalk.com/
+   replaces http://localhost:8080/
+*/
+
 export const fetchWarehouses = createAsyncThunk('warehouses/fetchWarehouses', async () => {
-    return await fetch('http://localhost:8080/warehouses', {
+    return await fetch('http://team-6-app-env-1.eba-ee7csmcw.us-east-1.elasticbeanstalk.com/warehouses', {
         method: "GET",
         headers: {'Content-Type':'application/json',
         },
     }).then(warehouses => warehouses.json())
 })
 
+//can't pass 2 params
 export const editWarehouse = createAsyncThunk('warehouses/editWarehouse', async (warehouse) => {
-    return await fetch(`http://localhost:8080/warehouses/${warehouse.id}`, {
+    return await fetch(`http://team-6-app-env-1.eba-ee7csmcw.us-east-1.elasticbeanstalk.com/${warehouse.id}`, {
         method: "PUT",
         headers: {
             'Content-Type':'application/json',
@@ -41,7 +46,7 @@ export const editWarehouse = createAsyncThunk('warehouses/editWarehouse', async 
 })
 
 export const deleteWarehouse = createAsyncThunk('warehouses/deleteWarehouse', async (id) => {
-    return await fetch(`http://localhost:8080/warehouses/${id}`, {
+    return await fetch(`http://team-6-app-env-1.eba-ee7csmcw.us-east-1.elasticbeanstalk.com/warehouses/${id}`, {
         method: "DELETE",
         headers: {'Content-Type':'application/json',
         },
@@ -49,7 +54,7 @@ export const deleteWarehouse = createAsyncThunk('warehouses/deleteWarehouse', as
 })
 
 export const createProduct = createAsyncThunk('warehouses/createProduct', async (product) => {
-    return await fetch('http://localhost:8080/products', {
+    return await fetch('http://team-6-app-env-1.eba-ee7csmcw.us-east-1.elasticbeanstalk.com/products', {
         method: "POST",
         headers: {'Content-Type':'application/json',
         },
@@ -58,16 +63,15 @@ export const createProduct = createAsyncThunk('warehouses/createProduct', async 
 })
 
 export const fetchProducts = createAsyncThunk('warehouses/fetchProducts', async () => {
-    return await fetch('http://localhost:8080/products', {
+    return await fetch('http://team-6-app-env-1.eba-ee7csmcw.us-east-1.elasticbeanstalk.com/products', {
         method: "GET",
         headers: {'Content-Type':'application/json',
         },
     }).then(products => products.json())
 })
 
-//why cant i pass 2 params?
 export const editProduct = createAsyncThunk('warehouses/editProduct', async (product) => {
-    return await fetch(`http://localhost:8080/products/${product.id}`, {
+    return await fetch(`http://team-6-app-env-1.eba-ee7csmcw.us-east-1.elasticbeanstalk.com/products/${product.id}`, {
         method: "PUT",
         headers: {
             'Content-Type':'application/json',
@@ -77,7 +81,7 @@ export const editProduct = createAsyncThunk('warehouses/editProduct', async (pro
 })
 
 export const deleteProduct = createAsyncThunk('warehouses/deleteProduct', async (id) => {
-    return await fetch(`http://localhost:8080/products/${id}`, {
+    return await fetch(`http://team-6-app-env-1.eba-ee7csmcw.us-east-1.elasticbeanstalk.com/products/${id}`, {
         method: "DELETE",
         headers: {'Content-Type':'application/json',
         },
