@@ -12,7 +12,7 @@ pipeline {
         stage('SonarScanner Frontend'){
             steps{
 
-                dir('frontend\inventory-management'){
+                dir('inventory-management'){
 
                     withSonarQubeEnv('SonarCloud') {
                         ...
