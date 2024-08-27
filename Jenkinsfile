@@ -31,7 +31,11 @@ pipeline {
         stage('Test Backend'){
             steps{
                 sh "cd inventory-management && mvn test"
-                    withSonarQubeEnv('SonarCloud') {
+            }
+        }
+        stage('Cloud backend test'){
+            steps{
+                withSonarQubeEnv('SonarCloud') {
                         sh '''
                             mvn sonar:sonar \
                             -Dsonar.projectKey=jlin96_inventory_management \
