@@ -15,8 +15,9 @@ pipeline {
                 dir('frontend/inventory-management') {
 
                     withSonarQubeEnv('SonarCloud') {
-                    sh"
-	                 npx sonar-scanner \
+                    
+                    
+	                sh" npx sonar-scanner \
                         -Dsonar.projectKey=jlin96_inventory-management-frontend \
                         -Dsonar.projectName=inventory-management-frontend \
                         -Dsonar.sources=src \
