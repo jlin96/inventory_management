@@ -2,11 +2,6 @@
 
 Feature: Warehouse
 
-    # Scenario: Clicking warehouse tab
-    #     Given I am on the Home Tab
-    #     When I click the Add Warehouse Button
-    #     Then Add Warehouse Modal shows show up.
-
     Scenario: Clicking add warehouse button
         Given I am on the warehouse tab
         When I click the add warehouse button
