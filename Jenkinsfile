@@ -44,7 +44,7 @@ pipeline {
                             -Dsonar.java.binaries=target/classes \
                             -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
                         '''
-            }
+                }
             }
         }
         stage('Deploy Backend'){

@@ -43,6 +43,7 @@ public class productSteps {
         this.product = new Product(driver);
     }
 
+    //adding comment just for test. temp remove sonar jenkins
     @Test
     public void simpleTest(){
         //assertEquals("Jesse's Mangement", product.getRowText());
