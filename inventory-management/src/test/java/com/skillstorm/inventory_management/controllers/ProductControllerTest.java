@@ -34,7 +34,7 @@ public class ProductControllerTest {
 
     @BeforeTest
     public void setUp() {
-        MockitoAnnotations.openMocks(this);
+        closeable = MockitoAnnotations.openMocks(this);
         // this.service = mock(ProductService.class);
         // this.controller = new ProductController(service);
     }
