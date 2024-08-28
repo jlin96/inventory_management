@@ -2,17 +2,9 @@ package com.skillstorm.inventory_management.cucumber;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.actuate.autoconfigure.metrics.MetricsProperties.System;
-import org.testng.annotations.*;
 
 import com.skillstorm.inventory_management.selenium.Product;
 import java.time.Duration;
@@ -31,7 +23,6 @@ public class productSteps {
     private static final String url = "http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com";
     private int rowsBeforeChanges;
 
-    
     @Before
     public void setup(){
 
@@ -41,14 +32,6 @@ public class productSteps {
         driver.get(url);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         this.product = new Product(driver);
-    }
-
-    //adding comment just for test. temp remove sonar jenkins
-    @Test
-    public void simpleTest(){
-        //assertEquals("Jesse's Mangement", product.getRowText());
-
-
     }
 
     /*-----------------------------------------------------------*/

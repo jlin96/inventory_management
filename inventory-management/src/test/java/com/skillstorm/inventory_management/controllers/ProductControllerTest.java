@@ -8,6 +8,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.skillstorm.inventory_management.dtos.ProductDto;
@@ -22,6 +23,7 @@ import static org.mockito.Mockito.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 
 public class ProductControllerTest {
 
@@ -45,12 +47,12 @@ public class ProductControllerTest {
     }
 
     @Test
-    void testDeleteById() {
+    public void testDeleteById() {
 
     }
 
     @Test
-    void testFindAll() {
+    public void testFindAll() {
 
         List<ProductDto> list = new ArrayList<>();
         list.add(new ProductDto(10, "XBOX Series X", "Gaming Console", 50, 1));
@@ -64,7 +66,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    void testFindById() {
+    public void testFindByIdSunnyDay() {
 
         Product arbitraProduct = new Product(99, "Truck", "New 2024 Ford", 20, new Warehouse());
         Optional<Product> optionalProduct = Optional.of(arbitraProduct);
@@ -77,12 +79,24 @@ public class ProductControllerTest {
     }
 
     @Test
-    void testSave() {
+    public void testFindByIdRainyDay(){
+
+        // Arange
+        when(service.findById(anyInt())).thenReturn(Optional.ofNullable(null));
+        // Act 
+        ResponseEntity<Product> httpStatusResponse = controller.findById(anyInt());
+        // Assert
+        assertEquals(new ResponseEntity<>(HttpStatus.NOT_FOUND), httpStatusResponse);
+    }
+
+
+    @Test
+    public void testSave() {
 
     }
 
     @Test
-    void testUpdate() {
+    public void testUpdate() {
 
     }
 
