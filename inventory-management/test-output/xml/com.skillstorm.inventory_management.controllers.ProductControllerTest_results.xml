@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TestNGTest-7da4e4d3-4830-421d-a099-4282a5d2983d"
+<testsuite name="TestNGTest-54cb9dc0-bf58-4106-a290-bf24c3a3f16e"
            tests="1"
            failures="0"
            errors="0"
            skipped="0"
-           time="0.181">
+           time="0.239">
     <properties></properties>
 
 
 
             <testcase
-                name="testFindAll"
-                time="0.181"
+                name="testFindById"
+                time="0.239"
                 classname="com.skillstorm.inventory_management.controllers.ProductControllerTest">
             </testcase>
 </testsuite>

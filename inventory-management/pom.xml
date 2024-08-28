@@ -173,31 +173,31 @@
 						<execution>
 							<id>default-report-integration</id>
 							<goals>
-<goal>report-integration</goal>
-</goals>
-</execution>
-<execution>
-<id>default-check</id>
-<goals>
-<goal>check</goal>
-</goals>
-<configuration>
-<rules>
-<rule>
-<element>BUNDLE</element>
-<limits>
-<limit>
-<counter>COMPLEXITY</counter>
-<value>COVEREDRATIO</value>
-<minimum>0.10</minimum>
-</limit>
-</limits>
-</rule>
-</rules>
-</configuration>
-</execution>
-</executions>
-</plugin>
+							<goal>report-integration</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>default-check</id>
+							<goals>
+							<goal>check</goal>
+							</goals>
+								<configuration>
+									<rules>
+									<rule>
+									<element>BUNDLE</element>
+									<limits>
+										<limit>
+										<counter>COMPLEXITY</counter>
+										<value>COVEREDRATIO</value>
+										<minimum>0.10</minimum>
+										</limit>
+									</limits>
+									</rule>
+									</rules>
+								</configuration>
+							</execution>
+							</executions>
+			</plugin>
 		</plugins>
 	</build>
 

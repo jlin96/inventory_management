@@ -56,7 +56,6 @@ public class productSteps {
     /*---------------------------------------------------------- */
     @Given("I am on the homepage")
     public void i_am_on_the_homepage(){
-        //assertEquals("Jesse's Mangement", product.verifyTitle());
         assertEquals("HOME", product.getHomeTitle());
     }
 
