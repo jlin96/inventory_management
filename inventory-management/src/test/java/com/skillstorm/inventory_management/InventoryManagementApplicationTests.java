@@ -1,14 +1,15 @@
 package com.skillstorm.inventory_management;
 
-import org.junit.jupiter.api.Test;
+
 import org.springframework.boot.test.context.SpringBootTest;
+import org.testng.annotations.Test;
 
 @SpringBootTest
 class InventoryManagementApplicationTests {
 
 	@Test
 	void contextLoads() {
-		System.out.println("hello world");
+		//System.out.println("hello world");
 	}
 
 }
