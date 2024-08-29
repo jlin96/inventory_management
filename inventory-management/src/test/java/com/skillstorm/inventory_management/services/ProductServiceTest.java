@@ -9,13 +9,16 @@ import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
+
 
 import com.skillstorm.inventory_management.dtos.ProductDto;
 import com.skillstorm.inventory_management.mappers.ProductMapper;
@@ -83,9 +86,17 @@ public class ProductServiceTest {
         verify(repo).findAll();
     }
 
+    @Ignore
     @Test
     void testFindById() {
-
+        Optional<Product> optionalProduct = Optional.of(arbitraryProduct);
+        // Arrange 
+        when(repo.findById(anyInt())).thenReturn(optionalProduct);
+        // Act
+        Optional<Product> response = service.findById(1);
+        // Assert
+        assertEquals(optionalProduct, response);
+        verify(repo).findById(anyInt());
     }
 
     @Test
