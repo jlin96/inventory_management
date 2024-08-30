@@ -1,37 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TestNGTest-47e4983d-863e-473d-9b3a-99ff8af06f9d"
+<testsuite name="TestNGTest-d762c470-6e4e-44e0-8682-e0910e69fd3a"
            tests="7"
            failures="0"
            errors="0"
            skipped="0"
-           time="0.228">
+           time="0.233">
     <properties></properties>
 
 
 
             <testcase
-                name="testUpdate"
-                time="0.002"
-                classname="com.skillstorm.inventory_management.controllers.ProductControllerTest">
-            </testcase>
-            <testcase
-                name="testDeleteById"
-                time="0.175"
-                classname="com.skillstorm.inventory_management.controllers.ProductControllerTest">
-            </testcase>
-            <testcase
                 name="testFindAll"
-                time="0.010"
-                classname="com.skillstorm.inventory_management.controllers.ProductControllerTest">
-            </testcase>
-            <testcase
-                name="testSaveRainyDay"
-                time="0.003"
+                time="0.007"
                 classname="com.skillstorm.inventory_management.controllers.ProductControllerTest">
             </testcase>
             <testcase
                 name="testFindByIdSunnyDay"
-                time="0.017"
+                time="0.018"
                 classname="com.skillstorm.inventory_management.controllers.ProductControllerTest">
             </testcase>
             <testcase
@@ -40,8 +25,23 @@
                 classname="com.skillstorm.inventory_management.controllers.ProductControllerTest">
             </testcase>
             <testcase
+                name="testDeleteById"
+                time="0.175"
+                classname="com.skillstorm.inventory_management.controllers.ProductControllerTest">
+            </testcase>
+            <testcase
+                name="testUpdate"
+                time="0.002"
+                classname="com.skillstorm.inventory_management.controllers.ProductControllerTest">
+            </testcase>
+            <testcase
                 name="testFindByIdRainyDay"
-                time="0.020"
+                time="0.028"
+                classname="com.skillstorm.inventory_management.controllers.ProductControllerTest">
+            </testcase>
+            <testcase
+                name="testSaveRainyDay"
+                time="0.002"
                 classname="com.skillstorm.inventory_management.controllers.ProductControllerTest">
             </testcase>
 </testsuite>

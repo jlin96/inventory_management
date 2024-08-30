@@ -16,14 +16,8 @@ import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
 //@CucumberOptions(features = "src/test/java/resources/features",glue = {"cucumber"},plugin = {"pretty","html"})
 @SelectClasspathResource("features")
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty")
-public class RunCucumberTest extends AbstractTestNGCucumberTests{
+public class RunCucumberTest {
 
-
-@Override
-@DataProvider(parallel = true)
-public Object[][] scenarios(){
-    return super.scenarios();
-}
 
 
 }

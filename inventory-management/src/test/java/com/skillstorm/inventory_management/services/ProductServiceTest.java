@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -35,8 +36,14 @@ public class ProductServiceTest {
     private WarehouseRepository warehouseRepo;
     @Mock
     private ProductMapper mapper;
+    @Mock 
+    private Warehouse mockWarehouse;
+    @Mock
+    private Product mProduct;
+    @Mock
+    private Optional<Warehouse> mOptWarehouse;
     @InjectMocks
-    private ProductService service;
+    private ProductService service;  // System under test
     private AutoCloseable closeable;
     private Product arbitraryProduct;
     private Warehouse arbitraryWarehouse;
@@ -62,7 +69,7 @@ public class ProductServiceTest {
     }
 
     @Test
-    void testDeleteById() {
+    public void testDeleteById() {
         // Arrange
         doNothing().when(repo).deleteById(anyInt());
         // Act
@@ -72,12 +79,12 @@ public class ProductServiceTest {
     }
 
     @Test
-    void testFindAll() {
+    public void testFindAll() {
 
+        // Arrange
         List<Product> list = new ArrayList<>();
         Product arbitraryProduct = new Product();
         list.add(arbitraryProduct);
-        // Arrange
         when(repo.findAll()).thenReturn(list);
         // Act
         List<ProductDto> productDto = service.findAll();
@@ -86,26 +93,51 @@ public class ProductServiceTest {
         verify(repo).findAll();
     }
 
-    @Ignore
-    @Test
-    void testFindById() {
-        Optional<Product> optionalProduct = Optional.of(arbitraryProduct);
-        // Arrange 
+    // Priority 1 set to ensure it runs before Rainy day in respect to verify method
+    @Test(priority=1)
+    public void testFindByIdSunnyDay() {
+
+        // Arrange
+        Optional<Product> optionalProduct = Optional.of(arbitraryProduct); 
         when(repo.findById(anyInt())).thenReturn(optionalProduct);
         // Act
-        Optional<Product> response = service.findById(1);
+        Optional<Product> response = service.findById(anyInt());
         // Assert
         assertEquals(optionalProduct, response);
         verify(repo).findById(anyInt());
     }
 
-    @Test
-    void testSave() {
+    // Priority 2 set to ensure it after Sunny day in respect to verify method
+    @Test(priority=2)
+    public void testFindByIdRainyDay(){
 
+        // Arrange 
+        Optional<Product> optionalProduct = Optional.ofNullable(null);
+        when(repo.findById(anyInt())).thenReturn(optionalProduct);
+        // Act
+        Optional<Product> response = service.findById(anyInt());
+        // Assert
+        assertEquals(Optional.empty(), response);
+        verify(repo, times(2)).findById(anyInt());
+    }
+
+    @Ignore
+    @Test
+    public void testSave() {
+        // Arrange 
+        
+        Optional<Warehouse> optionalWarehouse = Optional.of(arbitraryWarehouse);
+        when(mProduct.getWarehouse()).thenReturn(arbitraryWarehouse);
+        when(warehouseRepo.findById(anyInt())).thenReturn(optionalWarehouse);
+        // Act 
+        Product actual = service.save(arbitraryProduct);
+        //System.out.println(actual);
+        // Assert
+        assertEquals(arbitraryProduct, actual);
     }
 
     @Test
-    void testUpdate() {
+    public void testUpdate() {
 
     }
 }

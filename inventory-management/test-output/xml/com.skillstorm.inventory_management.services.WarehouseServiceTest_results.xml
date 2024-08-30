@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestNGTest-6344ef64-19e9-438b-8b22-55d19f8e4d21"
+           tests="1"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="0.141">
+    <properties></properties>
+
+
+
+            <testcase
+                name="testFindAll"
+                time="0.141"
+                classname="com.skillstorm.inventory_management.services.WarehouseServiceTest">
+            </testcase>
+</testsuite>
