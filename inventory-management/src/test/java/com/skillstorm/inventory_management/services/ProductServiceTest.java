@@ -19,7 +19,6 @@ import org.mockito.MockitoAnnotations;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 
@@ -119,7 +118,6 @@ public class ProductServiceTest {
         verify(repo, times(2)).findById(anyInt());
     }
 
-    
     @Test
     public void testSaveSunnyDay() {
         // Arrange 
@@ -131,6 +129,19 @@ public class ProductServiceTest {
         Product actual = service.save(arbitraryProduct);
         // Assert
         Assert.assertEquals(actual, arbitraryProduct);
+    }
+
+    @Test
+    public void testSaveRainyDay() {
+        // Arrange 
+        Optional<Warehouse> optionalWarehouse = Optional.ofNullable(null);
+        //when(mProduct.getWarehouse()).thenReturn(arbitraryWarehouse);
+        when(warehouseRepo.findById(anyInt())).thenReturn(optionalWarehouse);
+        when(repo.save(any(Product.class))).thenReturn(arbitraryProduct);
+        // Act 
+        Product actual = service.save(arbitraryProduct);
+        // Assert
+        Assert.assertEquals(actual, null);
     }
 
     @Test(priority = 3)
