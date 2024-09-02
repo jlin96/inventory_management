@@ -2,6 +2,7 @@ package com.skillstorm.inventory_management.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.times;
@@ -15,6 +16,7 @@ import java.util.Optional;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Ignore;
@@ -80,10 +82,8 @@ public class ProductServiceTest {
 
     @Test
     public void testFindAll() {
-
         // Arrange
         List<Product> list = new ArrayList<>();
-        Product arbitraryProduct = new Product();
         list.add(arbitraryProduct);
         when(repo.findAll()).thenReturn(list);
         // Act
@@ -96,7 +96,6 @@ public class ProductServiceTest {
     // Priority 1 set to ensure it runs before Rainy day in respect to verify method
     @Test(priority=1)
     public void testFindByIdSunnyDay() {
-
         // Arrange
         Optional<Product> optionalProduct = Optional.of(arbitraryProduct); 
         when(repo.findById(anyInt())).thenReturn(optionalProduct);
@@ -107,10 +106,9 @@ public class ProductServiceTest {
         verify(repo).findById(anyInt());
     }
 
-    // Priority 2 set to ensure it after Sunny day in respect to verify method
+    // Priority 2 set to ensure it runs after Sunny day in respect to verify method
     @Test(priority=2)
     public void testFindByIdRainyDay(){
-
         // Arrange 
         Optional<Product> optionalProduct = Optional.ofNullable(null);
         when(repo.findById(anyInt())).thenReturn(optionalProduct);
@@ -121,23 +119,29 @@ public class ProductServiceTest {
         verify(repo, times(2)).findById(anyInt());
     }
 
-    @Ignore
+    
     @Test
-    public void testSave() {
+    public void testSaveSunnyDay() {
         // Arrange 
-        
         Optional<Warehouse> optionalWarehouse = Optional.of(arbitraryWarehouse);
-        when(mProduct.getWarehouse()).thenReturn(arbitraryWarehouse);
+        //when(mProduct.getWarehouse()).thenReturn(arbitraryWarehouse);
         when(warehouseRepo.findById(anyInt())).thenReturn(optionalWarehouse);
+        when(repo.save(any(Product.class))).thenReturn(arbitraryProduct);
         // Act 
         Product actual = service.save(arbitraryProduct);
-        //System.out.println(actual);
         // Assert
-        assertEquals(arbitraryProduct, actual);
+        Assert.assertEquals(actual, arbitraryProduct);
     }
 
-    @Test
+    @Test(priority = 3)
     public void testUpdate() {
-
+        // Arrange
+        Optional<Product> optionalProduct = Optional.of(arbitraryProduct);
+        when(repo.findById(anyInt())).thenReturn(optionalProduct);
+        when(repo.save(arbitraryProduct)).thenReturn(arbitraryProduct);
+        // Act
+        Product actual = service.update(1, arbitraryProduct);
+        // Assert
+        Assert.assertEquals(actual, arbitraryProduct);
     }
 }

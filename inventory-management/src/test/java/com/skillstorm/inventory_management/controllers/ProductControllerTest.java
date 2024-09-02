@@ -5,10 +5,8 @@ import org.testng.annotations.Test;
 import org.testng.Assert;                                    
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Ignore;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,12 +20,10 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-//controller test
 public class ProductControllerTest {
 
     @Mock
@@ -36,12 +32,12 @@ public class ProductControllerTest {
     @InjectMocks
     private ProductController controller; // System under test
     private AutoCloseable closeable;
-    private Product arbitryProduct;
+    private Product arbitraryProduct;
 
     @BeforeTest
     public void setUp() {
         closeable = MockitoAnnotations.openMocks(this);
-        arbitryProduct = new Product(99, "Truck", "New 2024 Ford", 20, new Warehouse());
+        arbitraryProduct = new Product(99, "Truck", "New 2024 Ford", 20, new Warehouse());
     }
 
     @AfterTest
@@ -78,7 +74,7 @@ public class ProductControllerTest {
     @Test(priority = 1)
     public void testFindByIdSunnyDay() {
         // Arrange
-        Optional<Product> optionalProduct = Optional.of(arbitryProduct);
+        Optional<Product> optionalProduct = Optional.of(arbitraryProduct);
         when(service.findById(anyInt())).thenReturn(optionalProduct);
         // Act
         ResponseEntity<Product> actual = controller.findById(anyInt());
@@ -101,11 +97,11 @@ public class ProductControllerTest {
     @Test(priority = 1)
     public void testSaveSunnyDay() {
         // Arrange
-        when(service.save(any(Product.class))).thenReturn(arbitryProduct);
+        when(service.save(any(Product.class))).thenReturn(arbitraryProduct);
         // Act 
-        Product actual = controller.save(arbitryProduct);
+        Product actual = controller.save(arbitraryProduct);
         // Assert
-        Assert.assertEquals(actual, arbitryProduct);
+        Assert.assertEquals(actual, arbitraryProduct);
         verify(service).save(any(Product.class));
     }
     
@@ -114,7 +110,7 @@ public class ProductControllerTest {
         // Arrange
         when(service.save(any(Product.class))).thenReturn(null);
         // Act
-        Product actual = controller.save(arbitryProduct);
+        Product actual = controller.save(arbitraryProduct);
         //Assert
         Assert.assertEquals(actual, null);
         verify(service,times(2)).save(any(Product.class));
@@ -123,11 +119,11 @@ public class ProductControllerTest {
     @Test
     public void testUpdate() {
         //Arrange
-        when(service.update(anyInt(), any(Product.class))).thenReturn(arbitryProduct);
+        when(service.update(anyInt(), any(Product.class))).thenReturn(arbitraryProduct);
         // Act
-        Product actual = controller.update(1,arbitryProduct);
+        Product actual = controller.update(1,arbitraryProduct);
         //Assert
-        Assert.assertEquals(actual, arbitryProduct);
+        Assert.assertEquals(actual, arbitraryProduct);
         verify(service).update(anyInt(),any(Product.class));
     }
 

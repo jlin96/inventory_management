@@ -1,17 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TestNGTest-0af3ca1e-054e-476a-9b6a-00d9128bad99"
-           tests="1"
+<testsuite name="TestNGTest-fd90f8bd-90d7-40d8-a70f-44069525f9f5"
+           tests="6"
            failures="0"
            errors="0"
            skipped="0"
-           time="0.100">
+           time="0.190">
     <properties></properties>
 
 
 
             <testcase
+                name="testFindAll"
+                time="0.015"
+                classname="com.skillstorm.inventory_management.services.ProductServiceTest">
+            </testcase>
+            <testcase
+                name="testFindByIdRainyDay"
+                time="0.001"
+                classname="com.skillstorm.inventory_management.services.ProductServiceTest">
+            </testcase>
+            <testcase
+                name="testFindByIdSunnyDay"
+                time="0.004"
+                classname="com.skillstorm.inventory_management.services.ProductServiceTest">
+            </testcase>
+            <testcase
                 name="testUpdate"
-                time="0.100"
+                time="0.003"
+                classname="com.skillstorm.inventory_management.services.ProductServiceTest">
+            </testcase>
+            <testcase
+                name="testSave"
+                time="0.008"
+                classname="com.skillstorm.inventory_management.services.ProductServiceTest">
+            </testcase>
+            <testcase
+                name="testDeleteById"
+                time="0.159"
                 classname="com.skillstorm.inventory_management.services.ProductServiceTest">
             </testcase>
 </testsuite>
