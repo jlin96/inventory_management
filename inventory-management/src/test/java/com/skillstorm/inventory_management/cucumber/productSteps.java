@@ -15,6 +15,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.java.lu.a.as;
 
 public class productSteps {
 
@@ -25,139 +26,141 @@ public class productSteps {
 
     @Before
     public void setup(){
-
         ChromeOptions option = new ChromeOptions();
         option.addArguments("--headless=new");
         this.driver = new ChromeDriver(option);
+        //this.driver = new ChromeDriver();
         driver.get(url);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         this.product = new Product(driver);
+        System.out.println("--------- SCENARIO START ----------");
     }
 
-    /*-----------------------------------------------------------*/
-    /* Successfully navigate to the Product Table Scenario Start*/
-    /*---------------------------------------------------------- */
+    /*-----------------------------------------------------------------------------*/
+    /*        BACKGROUND: Successfully navigate to the product page | START        */
+    /*-----------------------------------------------------------------------------*/
     @Given("I am on the homepage")
     public void i_am_on_the_homepage(){
         assertEquals("HOME", product.getHomeTitle());
     }
-
     @When("I select the product tab")
     public void i_select_the_product_tab(){
-        //System.out.println("Selecting product tab from side menu...");
         product.clickProductTab();
     }
-
     @Then("I should see the product table")
     public void i_should_see_the_product_table(){
-        //System.out.println("Comparing table title to test if it matches Products...");
-        //assertEquals("Jesse's Mangement", product.verifyTitle());
         assertEquals("Products", product.getTableTitle());
     }
-    /*--------------------------------------------------------*/
-    /* Successfully navigate to the Product Table Scenario End*/
-    /*--------------------------------------------------------*/
+    /*-----------------------------------------------------------------------------*/
+    /*        BACKGROUND: Successfully navigate to the product page | END          */
+    /*-----------------------------------------------------------------------------*/
 
 
-    /* ----------------------------------------------------------
-     * Successfully navigate to the product form Scenario Start--
-     *----------------------------------------------------------*/
 
-    @Given("I am on the product page")
-    public void i_am_on_the_product_page(){
-        //System.out.println("Given i am on the product page i should see the product table")
-        assertEquals("HOME", product.getHomeTitle());
-        product.clickProductTab();
-        assertEquals("Products", product.getTableTitle());
-    }
-
-    @When("I click the Add Product button")
-    public void i_click_the_Add_Product_button(){
+    /*-----------------------------------------------------------------------------*/
+    /*        SCENARIO: Successfully navigate to the product form   | START        */
+    /*-----------------------------------------------------------------------------*/
+    @When("I click the add product button")
+    public void i_click_the_add_product_button(){
+        // rowsBeforeChanges is later referenced to verify delete and create changes
+        rowsBeforeChanges = product.getRows();
         product.clickAddProductButton();
     }
-
     @Then("I should see the product form")
     public void i_should_see_the_product_form(){
         assertEquals(true, product.isProductForm());
-       
     }
+    /*-----------------------------------------------------------------------------*/
+    /*        SCENARIO: Successfully navigate to the product form   | END          */
+    /*-----------------------------------------------------------------------------*/
 
-    /* ----------------------------------------------------------
-     * Successfully navigate to the product form Scenario Start--
-     *----------------------------------------------------------*/
 
 
-     /* ----------------------------------------------------------
-     * Successfully create a product Scenario Start--
-     *----------------------------------------------------------*/
-    @Given("I am on the product form")
-    public void i_am_on_the_product_form(){
-        assertEquals("HOME", product.getHomeTitle());
-        product.clickProductTab();
-        rowsBeforeChanges = product.getRows();
-        assertEquals("Products", product.getTableTitle());
-        product.clickAddProductButton();
-        assertEquals(true, product.isProductForm());
+
+    /*-----------------------------------------------------------------------------*/
+    /*        SCENARIO: Successfully create a product                | START       */
+    /*-----------------------------------------------------------------------------*/
+    @When("I fill in the name with {string}")
+    public void i_fill_in_the_name_with(String name) {
+        product.fillName(name);
     }
-
-    @When("I fill in the name")
-    public void i_fill_in_the_name(){
-        product.fillName();
+    @When("I fill in the description with {string}")
+    public void i_fill_in_the_description_with(String description) {
+        product.fillDescription(description);
     }
-
-    @And("I fill in the description")
-    public void i_fill_in_the_description(){
-        product.fillDescription();
+    @When("I fill in the stock with {string}")
+    public void i_fill_in_the_stock_with(String stock) {
+        product.fillStock(stock);
     }
-
-    @And("I fill in the stock")
-    public void i_fill_in_the_stock(){
-        product.fillStock();
+    @When("I fill in the warehouse with an existing warehouse id {string}")
+    public void i_fill_in_the_warehouse_with_an_existing_warehouse_id(String warehouseID) {
+        product.fillWarehouse(warehouseID);
     }
-
-    @And("I fill in the warehouse with an existing warehouse id")
-    public void i_fill_in_the_warehouse_with_an_existing_warehouse_id(){
-        product.fillWarehouse();
-    }
-
-    @And("i click the submit button")
+    @And("I click the submit button")
     public void i_click_the_submit_button(){
-        //rowsBeforeChanges = product.getRows();
         product.submitForm();
     }
-
     @Then("my new product should be created")
     public void my_new_product_should_be_created(){
-        
-        //System.out.println("Rows before changes : " + rowsBeforeChanges);
-        assertEquals((rowsBeforeChanges + 1), product.getRows());
+        // After a new product is successfully created the rows should increase by 1.
+        assertEquals((rowsBeforeChanges + 1),product.getRows());
     }
+    /*-----------------------------------------------------------------------------*/
+    /*        SCENARIO: Successfully create a product                | END         */
+    /*-----------------------------------------------------------------------------*/
 
-    /* ----------------------------------------------------------
-     * Successfully create a product Scenario End
-     *----------------------------------------------------------*/
 
-    /*-----------------------------------------------------------
-     * Successfully delete a product START
-     *----------------------------------------------------------*/
+
+
+    /*-----------------------------------------------------------------------------*/
+    /*        SCENARIO: Successfully delete a product                | START       */
+    /*-----------------------------------------------------------------------------*/
+    @Given("there exist at least 1 product in the table")
+    public void there_exist_at_least_1_product_in_the_table(){
+        rowsBeforeChanges = product.getRows();
+        if (rowsBeforeChanges > 0)
+            System.out.println("There does exist at least 1 product.\n");
+        else
+            System.out.print("Nothing to delete.\n");
+    }
 
     @When("I double click the delete button")
     public void i_double_click_the_delete_button(){
         rowsBeforeChanges = product.getRows();
-        product.clickDeleteButton();
+        if (rowsBeforeChanges > 0)
+            product.clickDeleteButton();
+        else
+            System.out.print("Nothing to delete.\n");
     }
 
     @Then("the product should be deleted")
     public void the_product_should_be_deleted(){
-        assertEquals(rowsBeforeChanges - 1, product.getRows());
+        if (rowsBeforeChanges > 0)
+            assertEquals(rowsBeforeChanges - 1, product.getRows());
+        else
+            System.out.print("Nothing to delete.\n");
     }
+   /*-----------------------------------------------------------------------------*/
+   /*        SCENARIO: Successfully delete a product                | END         */
+   /*-----------------------------------------------------------------------------*/
 
-    /*-----------------------------------------------------------
-     * Successfully delete a product END
-     *----------------------------------------------------------*/
+
+
+
+    /*-----------------------------------------------------------------------------*/
+    /*        SCENARIO: Successfully edit a product                  | START       */
+    /*-----------------------------------------------------------------------------*/
+
+
+
+   /*-----------------------------------------------------------------------------*/
+   /*        SCENARIO: Successfully delete a product                | END         */
+   /*-----------------------------------------------------------------------------*/
 
     @After
     public void teardown(){
-       product.quitDriver();
+        product.quitDriver();
+        System.out.println("--------- SCENARIO COMPLETE -----------");
     }
+
 }

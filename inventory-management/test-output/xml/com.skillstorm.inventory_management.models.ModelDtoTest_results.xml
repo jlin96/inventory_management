@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestNGTest-cab900a1-a47b-426a-b1f3-3daee473f8fe"
+           tests="1"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="0.431">
+    <properties></properties>
+
+
+
+            <testcase
+                name="modelDtoAllTest"
+                time="0.431"
+                classname="com.skillstorm.inventory_management.models.ModelDtoTest">
+            </testcase>
+</testsuite>

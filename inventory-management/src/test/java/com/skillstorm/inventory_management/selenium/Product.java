@@ -8,8 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-// Contains selenium code for test cases for test purpose
-// added just for testing
+
 public class Product {
     
     private WebDriver driver;
@@ -113,23 +112,28 @@ public class Product {
         return false;
     }
 
-    public void fillName(){
-        nameInput.sendKeys("HP Laptop");
+    public void fillName(String name){
+        nameInput.sendKeys(name);
     }
 
-    public void fillDescription(){
-        descriptionInput.sendKeys("core i7 intel processor");
+    public void fillDescription(String description){
+        descriptionInput.sendKeys(description);
     }
 
-    public void fillStock(){
-        stockInput.sendKeys("100");
+    public void fillStock(String stock){
+        stockInput.sendKeys(stock);
     }
 
-    public void fillWarehouse(){
-        warehouseInput.sendKeys("1");
+    public void fillWarehouse(String warehouseID){
+        warehouseInput.sendKeys(warehouseID);
     }
 
     public void submitForm(){
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         submitProductButton.submit();
     }
 

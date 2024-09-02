@@ -12,12 +12,14 @@ import org.mockito.MockitoAnnotations;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import java.util.Optional;
 import java.util.List;
 import java.util.ArrayList;
 
+import com.skillstorm.inventory_management.models.Product;
 import com.skillstorm.inventory_management.models.Warehouse;
 import com.skillstorm.inventory_management.repositories.WarehouseRepository;
 
@@ -25,6 +27,12 @@ public class WarehouseServiceTest {
     
     @Mock
     private WarehouseRepository repo; // Mock
+    @Mock
+    private Optional<Warehouse> mockWarehouseOption; // Mock
+    @Mock
+    private Warehouse mockWarehouse; // Mock
+    @Mock
+    private Product mockProduct; // Mock
     @InjectMocks
     private WarehouseService service; // System under test
     
@@ -67,11 +75,20 @@ public class WarehouseServiceTest {
         Assert.assertEquals(actual, expected);
     }
 
+    @Ignore
     @Test
     void testFindAllProduct() {
-         // Arrange 
-         Optional<Warehouse> expected = Optional.of(arbitraryWarehouse);
-         when(repo.findById(anyInt())).thenReturn(expected);
+        // Arrange 
+        List<Product> list = new ArrayList<>();
+        list.add(new Product());
+        Optional<Warehouse> expected = Optional.of(arbitraryWarehouse);
+        when(repo.findById(anyInt())).thenReturn(expected);
+        when(mockWarehouseOption.get()).thenReturn(arbitraryWarehouse);
+        when(mockWarehouse.getProduct()).thenReturn(list);
+        // Act
+        Iterable<Product> actual = service.findAllProduct(1);
+        // Assert
+        Assert.assertEquals(actual, list);
     }
 
     @Test

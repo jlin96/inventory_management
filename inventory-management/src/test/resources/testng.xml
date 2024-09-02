@@ -8,6 +8,7 @@
     <class name="com.skillstorm.inventory_management.controllers.WarehouseControllerTest"  />
     <class name="com.skillstorm.inventory_management.services.ProductServiceTest"  />
     <class name="com.skillstorm.inventory_management.services.WarehouseServiceTest"  />
+    <class name="com.skillstorm.inventory_management.models.ModelDtoTest" />
 </classes>
 </test>
 </suite>
