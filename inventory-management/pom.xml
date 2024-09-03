@@ -183,12 +183,12 @@
 						<artifactId>surefire-testng</artifactId>
 						<version>2.22.2</version>						<!-- must match -->
 					</dependency>
-					  <!-- JUnit Platform to run JUnit tests -->
+					  <!-- JUnit Platform to run JUnit tests 
                     <dependency>
                         <groupId>org.junit.platform</groupId>
                         <artifactId>junit-platform-surefire-provider</artifactId>
                         <version>1.3.2</version>
-                    </dependency>
+                    </dependency>-->
 				</dependencies>
 				<configuration>
 					<useSystemClassLoader>false</useSystemClassLoader>

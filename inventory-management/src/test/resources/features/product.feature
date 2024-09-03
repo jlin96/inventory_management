@@ -2,10 +2,10 @@
 Feature: Product
 Description: The purpose of this feature is to test product CRUD functionality
 
-  #Background: Successfully navigate to the product page
-  #  Given I am on the homepage
-  #  When I select the product tab
-  #  Then I should see the product table
+  Background: Successfully navigate to the product page
+    Given I am on the homepage
+    When I select the product tab
+    Then I should see the product table
 
   #Scenario: Successfully navigate to the product form
   #  When I click the add product button
