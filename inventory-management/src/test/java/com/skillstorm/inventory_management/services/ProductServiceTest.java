@@ -122,7 +122,6 @@ public class ProductServiceTest {
     public void testSaveSunnyDay() {
         // Arrange 
         Optional<Warehouse> optionalWarehouse = Optional.of(arbitraryWarehouse);
-        //when(mProduct.getWarehouse()).thenReturn(arbitraryWarehouse);
         when(warehouseRepo.findById(anyInt())).thenReturn(optionalWarehouse);
         when(repo.save(any(Product.class))).thenReturn(arbitraryProduct);
         // Act 
@@ -135,7 +134,6 @@ public class ProductServiceTest {
     public void testSaveRainyDay() {
         // Arrange 
         Optional<Warehouse> optionalWarehouse = Optional.ofNullable(null);
-        //when(mProduct.getWarehouse()).thenReturn(arbitraryWarehouse);
         when(warehouseRepo.findById(anyInt())).thenReturn(optionalWarehouse);
         when(repo.save(any(Product.class))).thenReturn(arbitraryProduct);
         // Act 

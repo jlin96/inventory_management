@@ -1,5 +1,6 @@
 package com.skillstorm.inventory_management.cucumber;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -21,14 +22,46 @@ public class WarehouseCRUD {
     
     private WebDriver driver;
     private Warehouse warehouse;
+    private static final String url = "http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com";
 
     @Before("@warehouse")
     public void before() {
         ChromeOptions options = new ChromeOptions();
-        driver = new ChromeDriver(options);
+        options.addArguments("--headless=new");
+        //this.driver = new ChromeDriver(options);
         this.driver = new ChromeDriver();
+        driver.get(url);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         this.warehouse = new Warehouse(driver);
     }
+
+
+
+    /*-----------------------------------------------------------------------------*/
+    /*        SCENARIO: Successfully navigate to the warehouse page | START        */
+    /*-----------------------------------------------------------------------------*/
+    @Given("I am on the home page")
+    public void i_am_on_the_home_page(){
+        assertEquals("HOME", warehouse.getHomeTitle());
+    }
+    @When("I click the warehouse tab")
+    public void i_click_the_warehouse_tab(){
+        warehouse.get();
+    }
+    @Then("I should see the warehouse table")
+    public void i_should_see_the_product_table(){
+        assertEquals("Warehouses", warehouse.getTableTitle());
+    }
+    /*-----------------------------------------------------------------------------*/
+    /*        SCENARIO: Successfully navigate to the warehouse page | END          */
+    /*-----------------------------------------------------------------------------*/
+
+
+
+
+    /*-----------------------------------------------------------------------------*/
+    /*        SCENARIO: Clicking add warehouse button               | START        */
+    /*-----------------------------------------------------------------------------*/
 
     @Given("I am on the warehouse tab")
     public void iAmOnWarehouseTab() {
@@ -44,7 +77,16 @@ public class WarehouseCRUD {
     public void iShouldSeeTheAddWarehouseModal() {
         assertTrue(warehouse.onForm());
     }
-    
+    /*-----------------------------------------------------------------------------*/
+    /*        SCENARIO: Clicking add warehouse button               | END          */
+    /*-----------------------------------------------------------------------------*/
+
+
+
+
+    /*-----------------------------------------------------------------------------*/
+    /*        SCENARIO: Adding warehouse to table                   | START        */
+    /*-----------------------------------------------------------------------------*/
     @Given("I am on the add warehouse modal")
     public void iAmOnTheAddWarehouseModal() {
         warehouse.get();
@@ -61,7 +103,16 @@ public class WarehouseCRUD {
     public void iShouldSeeTheWarehouseShowUpOnTheTable() {
         assertTrue(warehouse.hasWarehouse());
     }
+    /*-----------------------------------------------------------------------------*/
+    /*        SCENARIO: Adding warehouse to table                   | END          */
+    /*-----------------------------------------------------------------------------*/
 
+
+
+
+    /*-----------------------------------------------------------------------------*/
+    /*        SCENARIO: Clicking edit icon on a row               | START        */
+    /*-----------------------------------------------------------------------------*/
     @When("I click the edit icon on a warehouse row")
     public void iClickTheEditIconOnAWarehouseRow(){
         warehouse.clickEdit();
@@ -71,6 +122,12 @@ public class WarehouseCRUD {
     public void iShouldSeeTheEditWarehouseModal() {
         assertTrue(warehouse.onForm());
     }
+    /*-----------------------------------------------------------------------------*/
+    /*        SCENARIO: Clicking edit icon on a row                 | END          */
+    /*-----------------------------------------------------------------------------*/
+    
+
+
     
     @After("@warehouse")
     public void after() {

@@ -17,6 +17,9 @@ public class Warehouse {
     @FindBy(xpath = "//*[contains(text(), 'Warehouses')]")
     private WebElement warehouseTab;
 
+    //@FindBy(xpath = "//div[contains(@class, 'side-bar-items') and text()='Warehouses']")
+    //private WebElement warehouseTab1;
+
     @FindBy(className = "MuiBox-root")
     private WebElement warehouseTable;
 
@@ -29,9 +32,14 @@ public class Warehouse {
     @FindBy(className = "warehouse-form-button")
     private WebElement formSubmitButton;
 
+    @FindBy(xpath = "//div[contains(@class,'home-title') and text() = 'HOME']")
+    private WebElement homeTitle;
+
+    @FindBy(xpath = "//div[@id='tableTitle' and text()='Warehouses']")
+    private WebElement tableTitle;
+
     public Warehouse(WebDriver driver) {
         this.driver = driver;
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
         PageFactory.initElements(driver, this);
     }
 
@@ -139,6 +147,22 @@ public class Warehouse {
             e.printStackTrace();
         }
         return (driver.getPageSource().contains("New Walgreens") && driver.getPageSource().contains("567 Jones Street"));
+    }
+    public String getHomeTitle(){
+        if(homeTitle != null)
+        return homeTitle.getText();
+        return null;
+    }
+
+    public String getTableTitle(){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        if (tableTitle != null)
+            return tableTitle.getText();
+        return null;
     }
 
     public void clickDelete() {

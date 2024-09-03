@@ -151,11 +151,30 @@ public class productSteps {
     /*        SCENARIO: Successfully edit a product                  | START       */
     /*-----------------------------------------------------------------------------*/
 
+    @Given("there is at least one product on the table")
+    public void there_is_at_least_one_product_on_the_table(Integer int1) {
+    // Write code here that turns the phrase above into concrete actions
+    System.out.println("EDIT");
+    }
+    @When("I click the edit icon button in a row")
+    public void i_click_the_edit_icon_button_in_a_row() {
+    // Write code here that turns the phrase above into concrete actions
+    System.out.println("EDIT");
+    }
+    @Then("I should see the edit form")
+    public void i_should_see_the_edit_form() {
+    // Write code here that turns the phrase above into concrete actions
+    System.out.println("EDIT");
+    }
+    @Then("my selected product should be edited")
+    public void my_selected_product_should_be_edited() {
+    // Write code here that turns the phrase above into concrete actions
+    System.out.println("EDIT");
+    }
 
-
-   /*-----------------------------------------------------------------------------*/
-   /*        SCENARIO: Successfully delete a product                | END         */
-   /*-----------------------------------------------------------------------------*/
+    /*-----------------------------------------------------------------------------*/
+    /*        SCENARIO: Successfully edir a product                  | END         */
+    /*-----------------------------------------------------------------------------*/
 
     @After
     public void teardown(){

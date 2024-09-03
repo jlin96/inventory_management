@@ -75,20 +75,21 @@ public class WarehouseServiceTest {
         Assert.assertEquals(actual, expected);
     }
 
-    @Ignore
     @Test
     void testFindAllProduct() {
-        // Arrange 
+        // Arrange
         List<Product> list = new ArrayList<>();
         list.add(new Product());
-        Optional<Warehouse> expected = Optional.of(arbitraryWarehouse);
-        when(repo.findById(anyInt())).thenReturn(expected);
-        when(mockWarehouseOption.get()).thenReturn(arbitraryWarehouse);
+        list.add(new Product());
+        arbitraryWarehouse.setProduct(list);
+        Optional<Warehouse> optionalWarehouse = Optional.of(arbitraryWarehouse);
+        Iterable<Product> expected = list;
+        when(repo.findById(anyInt())).thenReturn(optionalWarehouse);
         when(mockWarehouse.getProduct()).thenReturn(list);
         // Act
         Iterable<Product> actual = service.findAllProduct(1);
         // Assert
-        Assert.assertEquals(actual, list);
+        Assert.assertEquals(actual,expected);
     }
 
     @Test
@@ -113,8 +114,16 @@ public class WarehouseServiceTest {
 
     }
 
+    @Ignore
     @Test
     void testUpdate() {
-
+        // Arrange
+        Optional<Warehouse> optionalWarehouse = Optional.of(arbitraryWarehouse);
+        when(repo.findById(anyInt())).thenReturn(optionalWarehouse);
+        
+        // Act 
+        Warehouse actual = service.update(1, arbitraryWarehouse);
+        // Assert
+        Assert.assertEquals(actual, arbitraryWarehouse);
     }
 }
