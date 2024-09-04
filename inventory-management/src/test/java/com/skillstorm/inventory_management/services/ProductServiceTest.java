@@ -32,17 +32,11 @@ import com.skillstorm.inventory_management.repositories.WarehouseRepository;
 public class ProductServiceTest {
 
     @Mock
-    private ProductRepository repo;
+    private ProductRepository repo;            // Mock
     @Mock
-    private WarehouseRepository warehouseRepo;
+    private WarehouseRepository warehouseRepo; // Mock
     @Mock
-    private ProductMapper mapper;
-    @Mock 
-    private Warehouse mockWarehouse;
-    @Mock
-    private Product mProduct;
-    @Mock
-    private Optional<Warehouse> mOptWarehouse;
+    private ProductMapper mapper;              // Mock
     @InjectMocks
     private ProductService service;  // System under test
     private AutoCloseable closeable;

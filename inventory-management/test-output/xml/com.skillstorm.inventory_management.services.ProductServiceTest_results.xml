@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TestNGTest-addf53bb-66e8-4d0a-939c-89649629c774"
+<testsuite name="TestNGTest-022e5b96-a436-4e84-8410-6bfe95b8bc4e"
            tests="7"
            failures="0"
            errors="0"
            skipped="0"
-           time="0.177">
+           time="0.181">
     <properties></properties>
 
 
 
-            <testcase
-                name="testDeleteById"
-                time="0.138"
-                classname="com.skillstorm.inventory_management.services.ProductServiceTest">
-            </testcase>
-            <testcase
-                name="testSaveRainyDay"
-                time="0.008"
-                classname="com.skillstorm.inventory_management.services.ProductServiceTest">
-            </testcase>
-            <testcase
-                name="testSaveSunnyDay"
-                time="0.001"
-                classname="com.skillstorm.inventory_management.services.ProductServiceTest">
-            </testcase>
             <testcase
                 name="testFindByIdRainyDay"
                 time="0.001"
                 classname="com.skillstorm.inventory_management.services.ProductServiceTest">
             </testcase>
             <testcase
+                name="testSaveRainyDay"
+                time="0.007"
+                classname="com.skillstorm.inventory_management.services.ProductServiceTest">
+            </testcase>
+            <testcase
+                name="testFindByIdSunnyDay"
+                time="0.003"
+                classname="com.skillstorm.inventory_management.services.ProductServiceTest">
+            </testcase>
+            <testcase
+                name="testDeleteById"
+                time="0.153"
+                classname="com.skillstorm.inventory_management.services.ProductServiceTest">
+            </testcase>
+            <testcase
                 name="testFindAll"
-                time="0.023"
+                time="0.013"
+                classname="com.skillstorm.inventory_management.services.ProductServiceTest">
+            </testcase>
+            <testcase
+                name="testSaveSunnyDay"
+                time="0.002"
                 classname="com.skillstorm.inventory_management.services.ProductServiceTest">
             </testcase>
             <testcase
                 name="testUpdate"
                 time="0.002"
-                classname="com.skillstorm.inventory_management.services.ProductServiceTest">
-            </testcase>
-            <testcase
-                name="testFindByIdSunnyDay"
-                time="0.004"
                 classname="com.skillstorm.inventory_management.services.ProductServiceTest">
             </testcase>
 </testsuite>

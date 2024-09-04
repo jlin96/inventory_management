@@ -2,6 +2,7 @@ package com.skillstorm.inventory_management.services;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -27,8 +28,6 @@ public class WarehouseServiceTest {
     
     @Mock
     private WarehouseRepository repo; // Mock
-    @Mock
-    private Optional<Warehouse> mockWarehouseOption; // Mock
     @Mock
     private Warehouse mockWarehouse; // Mock
     @Mock
@@ -114,16 +113,17 @@ public class WarehouseServiceTest {
 
     }
 
-    @Ignore
     @Test
     void testUpdate() {
         // Arrange
         Optional<Warehouse> optionalWarehouse = Optional.of(arbitraryWarehouse);
         when(repo.findById(anyInt())).thenReturn(optionalWarehouse);
-        
-        // Act 
+        when(repo.save(any(Warehouse.class))).thenReturn(arbitraryWarehouse);
+        // Act
         Warehouse actual = service.update(1, arbitraryWarehouse);
         // Assert
-        Assert.assertEquals(actual, arbitraryWarehouse);
+        Assert.assertEquals(actual.getAddress(),"5125 NW 36st" );
+        Assert.assertEquals(actual.getName(), "Main Warehouse");
     }
+
 }

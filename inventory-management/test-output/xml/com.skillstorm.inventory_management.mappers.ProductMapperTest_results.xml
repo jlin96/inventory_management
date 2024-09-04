@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TestNGTest-919d05b6-4db8-4f4a-9ab6-643d3a30f3c9"
+<testsuite name="TestNGTest-bc4b5965-d86f-458b-a8dc-f5fe84a86f52"
            tests="1"
            failures="0"
            errors="0"
            skipped="0"
-           time="0.076">
+           time="0.071">
     <properties></properties>
 
 
 
             <testcase
                 name="testToDto"
-                time="0.076"
+                time="0.071"
                 classname="com.skillstorm.inventory_management.mappers.ProductMapperTest">
             </testcase>
 </testsuite>

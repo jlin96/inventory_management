@@ -7,10 +7,10 @@ import org.testng.annotations.Test;
 import com.skillstorm.inventory_management.dtos.ProductDto;
 import com.skillstorm.inventory_management.mappers.ProductMapper;
 
-/*
- * This class uses the MeanBean library that simplifies testing POJO's
- *  getters, setters, constructors, equal, and hashcode method.
- */
+/*                                                                      *
+ * This class uses the MeanBean library that simplifies testing POJO's  *
+ * getters, setters, constructors, equal, and hashcode method.          *
+ *                                                                      */                                                                      
 public class ModelDtoTest {
 
     @Test
