@@ -138,7 +138,7 @@ public class productSteps {
     @Then("the product should be deleted")
     public void the_product_should_be_deleted(){
         if (rowsBeforeChangesProduct > 0)
-            assertEquals(rowsBeforeChangesProduct - 1, product.getRows());
+            Assert.assertEquals(rowsBeforeChangesProduct - 1, product.getRows());
         else
             System.out.print("Nothing to delete.\n");
     }

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testResults version="1.2">
+<httpSample t="120" it="0" lt="117" ct="41" ts="1725567602443" s="true" lb="HTTP Request" rc="200" rm="OK" tn="Thread Group 1-3" dt="text" by="1163" sby="161" ng="4" na="4">
+  <java.net.URL>http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com/</java.net.URL>
+</httpSample>
+<httpSample t="218" it="0" lt="207" ct="123" ts="1725567602345" s="true" lb="HTTP Request" rc="200" rm="OK" tn="Thread Group 1-2" dt="text" by="1163" sby="161" ng="4" na="4">
+  <java.net.URL>http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com/</java.net.URL>
+</httpSample>
+<httpSample t="218" it="0" lt="207" ct="123" ts="1725567602345" s="true" lb="HTTP Request" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="1163" sby="161" ng="4" na="4">
+  <java.net.URL>http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com/</java.net.URL>
+</httpSample>
+<httpSample t="56" it="0" lt="56" ct="0" ts="1725567602578" s="true" lb="HTTP Request" rc="200" rm="OK" tn="Thread Group 1-1" dt="text" by="1163" sby="161" ng="4" na="4">
+  <java.net.URL>http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com/</java.net.URL>
+</httpSample>
+<httpSample t="62" it="0" lt="62" ct="0" ts="1725567602581" s="true" lb="HTTP Request" rc="200" rm="OK" tn="Thread Group 1-3" dt="text" by="1163" sby="161" ng="4" na="4">
+  <java.net.URL>http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com/</java.net.URL>
+</httpSample>
+<httpSample t="78" it="0" lt="78" ct="0" ts="1725567602578" s="true" lb="HTTP Request" rc="200" rm="OK" tn="Thread Group 1-2" dt="text" by="1163" sby="161" ng="3" na="3">
+  <java.net.URL>http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com/</java.net.URL>
+</httpSample>
+<httpSample t="115" it="0" lt="115" ct="37" ts="1725567602542" s="true" lb="HTTP Request" rc="200" rm="OK" tn="Thread Group 1-4" dt="text" by="1163" sby="161" ng="3" na="3">
+  <java.net.URL>http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com/</java.net.URL>
+</httpSample>
+<httpSample t="52" it="0" lt="52" ct="0" ts="1725567602658" s="true" lb="HTTP Request" rc="200" rm="OK" tn="Thread Group 1-4" dt="text" by="1163" sby="161" ng="2" na="2">
+  <java.net.URL>http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com/</java.net.URL>
+</httpSample>
+<httpSample t="96" it="0" lt="96" ct="40" ts="1725567602642" s="true" lb="HTTP Request" rc="200" rm="OK" tn="Thread Group 1-5" dt="text" by="1163" sby="161" ng="1" na="1">
+  <java.net.URL>http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com/</java.net.URL>
+</httpSample>
+<httpSample t="53" it="0" lt="53" ct="0" ts="1725567602739" s="true" lb="HTTP Request" rc="200" rm="OK" tn="Thread Group 1-5" dt="text" by="1163" sby="161" ng="2" na="2">
+  <java.net.URL>http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com/</java.net.URL>
+</httpSample>
+<httpSample t="102" it="0" lt="102" ct="36" ts="1725567602741" s="true" lb="HTTP Request" rc="200" rm="OK" tn="Thread Group 1-6" dt="text" by="1163" sby="161" ng="2" na="2">
+  <java.net.URL>http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com/</java.net.URL>
+</httpSample>
+<httpSample t="62" it="0" lt="62" ct="0" ts="1725567602844" s="true" lb="HTTP Request" rc="200" rm="OK" tn="Thread Group 1-6" dt="text" by="1163" sby="161" ng="2" na="2">
+  <java.net.URL>http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com/</java.net.URL>
+</httpSample>
+<httpSample t="113" it="0" lt="113" ct="42" ts="1725567602840" s="true" lb="HTTP Request" rc="200" rm="OK" tn="Thread Group 1-7" dt="text" by="1163" sby="161" ng="2" na="2">
+  <java.net.URL>http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com/</java.net.URL>
+</httpSample>
+<httpSample t="56" it="0" lt="55" ct="0" ts="1725567602955" s="true" lb="HTTP Request" rc="200" rm="OK" tn="Thread Group 1-7" dt="text" by="1163" sby="161" ng="2" na="2">
+  <java.net.URL>http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com/</java.net.URL>
+</httpSample>
+<httpSample t="131" it="0" lt="131" ct="39" ts="1725567602945" s="true" lb="HTTP Request" rc="200" rm="OK" tn="Thread Group 1-8" dt="text" by="1163" sby="161" ng="2" na="2">
+  <java.net.URL>http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com/</java.net.URL>
+</httpSample>
+<httpSample t="56" it="0" lt="55" ct="0" ts="1725567603078" s="true" lb="HTTP Request" rc="200" rm="OK" tn="Thread Group 1-8" dt="text" by="1163" sby="161" ng="2" na="2">
+  <java.net.URL>http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com/</java.net.URL>
+</httpSample>
+<httpSample t="95" it="0" lt="95" ct="39" ts="1725567603042" s="true" lb="HTTP Request" rc="200" rm="OK" tn="Thread Group 1-9" dt="text" by="1163" sby="161" ng="1" na="1">
+  <java.net.URL>http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com/</java.net.URL>
+</httpSample>
+<httpSample t="60" it="0" lt="60" ct="0" ts="1725567603138" s="true" lb="HTTP Request" rc="200" rm="OK" tn="Thread Group 1-9" dt="text" by="1163" sby="161" ng="2" na="2">
+  <java.net.URL>http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com/</java.net.URL>
+</httpSample>
+<httpSample t="101" it="0" lt="101" ct="37" ts="1725567603143" s="true" lb="HTTP Request" rc="200" rm="OK" tn="Thread Group 1-10" dt="text" by="1163" sby="161" ng="1" na="1">
+  <java.net.URL>http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com/</java.net.URL>
+</httpSample>
+<httpSample t="76" it="0" lt="76" ct="0" ts="1725567603245" s="true" lb="HTTP Request" rc="200" rm="OK" tn="Thread Group 1-10" dt="text" by="1163" sby="161" ng="1" na="1">
+  <java.net.URL>http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com/</java.net.URL>
+</httpSample>
+
+</testResults>
