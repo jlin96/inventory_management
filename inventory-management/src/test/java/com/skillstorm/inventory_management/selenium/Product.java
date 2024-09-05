@@ -3,6 +3,7 @@ package com.skillstorm.inventory_management.selenium;
 import java.time.Duration;
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -185,6 +186,12 @@ public class Product {
         deleteButton.get(0).click();
         //second click deletes the selected row
         deleteButton.get(0).click();
+    }
+
+    public void clickDeleteButton1(){
+        List<WebElement> deleteButtons = driver.findElements(By.xpath("//button[@aria-label='Delete']"));
+        deleteButtons.get(1).click();
+        deleteButtons.get(1).click();
     }
 
     public boolean isRowsGreaterThanZero(){

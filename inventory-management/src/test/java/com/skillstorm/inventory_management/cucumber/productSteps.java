@@ -129,7 +129,7 @@ public class productSteps {
     @When("I double click the delete button")
     public void i_double_click_the_delete_button(){
         if (rowsBeforeChangesProduct > 0)
-            product.clickDeleteButton();
+            product.clickDeleteButton1();
         else
             System.out.print("Nothing to delete.\n");
     }
@@ -137,9 +137,9 @@ public class productSteps {
     @Then("the product should be deleted")
     public void the_product_should_be_deleted(){
         if (rowsBeforeChangesProduct > 0)
-           // Assert.assertEquals(rowsBeforeChangesProduct - 1, product.getRows());
-           System.out.println("Rows before changes : " + rowsBeforeChangesProduct  +
-           "\nRows after : " + product.getRows());
+            Assert.assertEquals(rowsBeforeChangesProduct - 1, product.getRows());
+           //System.out.println("Rows before changes : " + rowsBeforeChangesProduct  +
+           //"\nRows after : " + product.getRows());
         else
             System.out.print("Nothing to delete.\n");
     }
