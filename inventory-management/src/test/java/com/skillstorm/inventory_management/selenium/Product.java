@@ -192,6 +192,11 @@ public class Product {
         */
 
     public void clickDeleteButton1(){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         List<WebElement> deleteButtons = driver.findElements(By.xpath("//button[@aria-label='Delete']"));
         WebElement deleteBtn = deleteButtons.get(1);
         deleteBtn.click();
