@@ -49,10 +49,11 @@ public class Product {
 
     @FindBy(xpath = "//p[contains(@class, 'MuiTablePagination-displayedRows css-1chpzqh')]")
     private WebElement rowCount;
-
+    /* 
     @FindBy(xpath="//button[contains(@class,'') and @aria-label='Delete']")
     private List<WebElement> deleteButton;
-
+    */
+    
     @FindBy(xpath = "//button[@aria-label='Edit']")
     private List<WebElement> editButtons;
 
@@ -181,12 +182,14 @@ public class Product {
         return Integer.parseInt(rowValue);
     }
 
+    /* 
     public void clickDeleteButton(){
         //first click selects the row
         deleteButton.get(0).click();
         //second click deletes the selected row
         deleteButton.get(0).click();
     }
+        */
 
     public void clickDeleteButton1(){
         List<WebElement> deleteButtons = driver.findElements(By.xpath("//button[@aria-label='Delete']"));
