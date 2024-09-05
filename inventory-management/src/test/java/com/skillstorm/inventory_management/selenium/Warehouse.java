@@ -239,9 +239,9 @@ public class Warehouse {
             e.printStackTrace();
         }
         //first click selects the row
-        deleteButton.get(0).click();
+        deleteButton.get(1).click();
         //second click deletes the selected row
-        deleteButton.get(0).click();
+        deleteButton.get(1).click();
     }
 
     public int getRows(){
