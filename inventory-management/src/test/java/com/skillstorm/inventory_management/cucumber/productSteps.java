@@ -30,8 +30,8 @@ public class productSteps {
     public void setup(){
         ChromeOptions option = new ChromeOptions();
         option.addArguments("--headless=new");
-        //this.driver = new ChromeDriver(option);
-        this.driver = new ChromeDriver();
+        this.driver = new ChromeDriver(option);
+        //this.driver = new ChromeDriver();
         driver.get(url);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         this.product = new Product(driver);

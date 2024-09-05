@@ -28,10 +28,10 @@ public class WarehouseSteps {
 
     @Before("@warehouse")
     public void setup() {
-        //ChromeOptions options = new ChromeOptions();
-        //options.addArguments("--headless=new");
-        //this.driver = new ChromeDriver(options);
-        this.driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless=new");
+        this.driver = new ChromeDriver(options);
+        //this.driver = new ChromeDriver();
         driver.get(url);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         this.warehouse = new Warehouse(driver);
