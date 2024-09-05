@@ -200,6 +200,7 @@ public class Product {
         List<WebElement> deleteButtons = driver.findElements(By.xpath("//button[@aria-label='Delete']"));
         WebElement deleteBtn = deleteButtons.get(1);
         deleteBtn.click();
+        deleteBtn = deleteButtons.get(1);
         deleteBtn.click();
 
     }
