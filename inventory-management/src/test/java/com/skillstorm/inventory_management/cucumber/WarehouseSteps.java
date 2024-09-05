@@ -111,7 +111,6 @@ public class WarehouseSteps {
     /*-----------------------------------------------------------------------------*/
     @Given("there exist at least one warehouse in the table")
     public void there_exist_at_least_one_warehouse_in_the_table() {
-        rowsBeforeChanges = warehouse.getRows();
         if (rowsBeforeChanges > 0)
             System.out.println("There does exist at least 1 product.\n");
         else
@@ -127,9 +126,9 @@ public class WarehouseSteps {
     }
     @Then("the warehouse should be deleted")
     public void the_warehouse_should_be_deleted() {
-        //if (rowsBeforeChanges > 0)
-        //    assertEquals(rowsBeforeChanges - 1, warehouse.getRows());
-        //else
+        if (rowsBeforeChanges > 0)
+            assertEquals(rowsBeforeChanges - 1, warehouse.getRows());
+        else
             System.out.print("Nothing to delete.\n");
     }
     /*-----------------------------------------------------------------------------*/
