@@ -190,7 +190,7 @@ public class Product {
         deleteButton.get(0).click();
     }
         */
-
+    // test
     public void clickDeleteButton1(){
         try {
             Thread.sleep(1000);
