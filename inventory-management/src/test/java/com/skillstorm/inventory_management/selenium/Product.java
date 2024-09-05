@@ -49,7 +49,7 @@ public class Product {
     @FindBy(xpath = "//p[contains(@class, 'MuiTablePagination-displayedRows css-1chpzqh')]")
     private WebElement rowCount;
 
-    @FindBy(xpath="//button[@aria-label='Delete']")
+    @FindBy(xpath="//button[contains(@class,'') and @aria-label='Delete']")
     private List<WebElement> deleteButton;
 
     @FindBy(xpath = "//button[@aria-label='Edit']")
