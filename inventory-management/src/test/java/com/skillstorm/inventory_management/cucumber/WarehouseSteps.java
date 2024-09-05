@@ -123,7 +123,7 @@ public class WarehouseSteps {
             warehouse.clickDeleteButton();
         else
             System.out.print("Nothing to delete.\n");
-    }
+    }//
     @Then("the warehouse should be deleted")
     public void the_warehouse_should_be_deleted() {
         System.out.println("Rows before : " + rowsBeforeChanges);
