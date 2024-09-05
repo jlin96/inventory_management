@@ -126,8 +126,11 @@ public class WarehouseSteps {
     }
     @Then("the warehouse should be deleted")
     public void the_warehouse_should_be_deleted() {
+        System.out.println("Rows before : " + rowsBeforeChanges);
+        System.out.println("Rows before : " + warehouse.getRows());
+
         if (rowsBeforeChanges > 0)
-            assertEquals(rowsBeforeChanges - 1, warehouse.getRows());
+            Assert.assertEquals(rowsBeforeChanges - 1, warehouse.getRows());
         else
             System.out.print("Nothing to delete.\n");
     }
