@@ -53,9 +53,10 @@ public class Warehouse {
     @FindBy(xpath = "//p[contains(@class, 'MuiTablePagination-displayedRows css-1chpzqh')]")
     private WebElement rowCount;
 
+    /* 
     @FindBy(xpath="//button[@aria-label='Delete']")
     private List<WebElement> deleteButton;
-
+    */
     public Warehouse(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -239,9 +240,9 @@ public class Warehouse {
             e.printStackTrace();
         }
         //first click selects the row
-        deleteButton.get(1).click();
+        //deleteButton.get(1).click();
         //second click deletes the selected row
-        deleteButton.get(1).click();
+        //deleteButton.get(1).click();
     }
 
     public int getRows(){
