@@ -164,7 +164,7 @@ public class Product {
         //first click selects the row
         deleteButton.get(0).click();
         //second click deletes the selected row
-        //deleteButton.get(0).click();
+        deleteButton.get(0).click();
     }
 
     public boolean isRowsGreaterThanZero(){
