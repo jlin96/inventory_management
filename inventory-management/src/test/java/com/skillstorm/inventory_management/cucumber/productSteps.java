@@ -24,7 +24,7 @@ public class productSteps {
     private Product product;
     private WebDriver driver;
     private static final String url = "http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com";
-    private int rowsBeforeChanges;
+    private int rowsBeforeChangesProduct;
 
     @Before("@product")
     public void setup(){
@@ -65,7 +65,7 @@ public class productSteps {
     @When("I click the add product button")
     public void i_click_the_add_product_button(){
         // rowsBeforeChanges is later referenced to verify delete and create changes
-        rowsBeforeChanges = product.getRows();
+        this.rowsBeforeChangesProduct = product.getRows();
         product.clickAddProductButton();
     }
     @Then("I should see the product form")
@@ -105,7 +105,7 @@ public class productSteps {
     @Then("my new product should be created")
     public void my_new_product_should_be_created(){
         // After a new product is successfully created the rows should increase by 1.
-        assertEquals((rowsBeforeChanges + 1),product.getRows());
+        assertEquals((rowsBeforeChangesProduct + 1),product.getRows());
     }
     /*-----------------------------------------------------------------------------*/
     /*        SCENARIO: Successfully create a product                | END         */
@@ -119,8 +119,8 @@ public class productSteps {
     /*-----------------------------------------------------------------------------*/
     @Given("there exist at least 1 product in the table")
     public void there_exist_at_least_1_product_in_the_table(){
-        rowsBeforeChanges = product.getRows();
-        if (rowsBeforeChanges > 0)
+        rowsBeforeChangesProduct = product.getRows();
+        if (rowsBeforeChangesProduct > 0)
             System.out.println("There does exist at least 1 product.\n");
         else
             System.out.print("Nothing to delete.\n");
@@ -128,8 +128,8 @@ public class productSteps {
 
     @When("I double click the delete button")
     public void i_double_click_the_delete_button(){
-        rowsBeforeChanges = product.getRows();
-        if (rowsBeforeChanges > 0)
+        rowsBeforeChangesProduct = product.getRows();
+        if (rowsBeforeChangesProduct > 0)
             product.clickDeleteButton();
         else
             System.out.print("Nothing to delete.\n");
@@ -137,8 +137,8 @@ public class productSteps {
 
     @Then("the product should be deleted")
     public void the_product_should_be_deleted(){
-        if (rowsBeforeChanges > 0)
-            assertEquals(rowsBeforeChanges - 1, product.getRows());
+        if (rowsBeforeChangesProduct > 0)
+            assertEquals(rowsBeforeChangesProduct - 1, product.getRows());
         else
             System.out.print("Nothing to delete.\n");
     }
