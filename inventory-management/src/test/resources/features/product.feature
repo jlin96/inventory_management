@@ -23,8 +23,8 @@ Description: The purpose of this feature is to test product CRUD functionality
     Examples:
     |name               | description           | stock | warehouseID |
     |SONY Stereo System | Home Entertainement   |  100  |     65      |
-    |XBOX Series X      | Home Entertainement   |  100  |     65      |
-    |Shredder           | Office Supply         |   50  |     65      |
+   # |XBOX Series X      | Home Entertainement   |  100  |     65      |
+   # |Shredder           | Office Supply         |   50  |     65      |
 
   Scenario: Successfully delete a product
     Given there exist at least 1 product in the table

@@ -193,8 +193,10 @@ public class Product {
 
     public void clickDeleteButton1(){
         List<WebElement> deleteButtons = driver.findElements(By.xpath("//button[@aria-label='Delete']"));
-        deleteButtons.get(1).click();
-        deleteButtons.get(1).click();
+        WebElement deleteBtn = deleteButtons.get(1);
+        deleteBtn.click();
+        deleteBtn.click();
+
     }
 
     public boolean isRowsGreaterThanZero(){

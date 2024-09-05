@@ -30,8 +30,8 @@ public class productSteps {
     public void setup(){
         ChromeOptions option = new ChromeOptions();
         option.addArguments("--headless=new");
-        this.driver = new ChromeDriver(option);
-        //this.driver = new ChromeDriver();
+        //this.driver = new ChromeDriver(option);
+        this.driver = new ChromeDriver();
         driver.get(url);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         this.product = new Product(driver);
@@ -136,10 +136,10 @@ public class productSteps {
 
     @Then("the product should be deleted")
     public void the_product_should_be_deleted(){
-        if (rowsBeforeChangesProduct > 0)
+        if (rowsBeforeChangesProduct > 0){
             Assert.assertEquals(rowsBeforeChangesProduct - 1, product.getRows());
-           //System.out.println("Rows before changes : " + rowsBeforeChangesProduct  +
-           //"\nRows after : " + product.getRows());
+           System.out.println("Rows before changes : " + rowsBeforeChangesProduct  +
+           "\nRows after : " + product.getRows());}
         else
             System.out.print("Nothing to delete.\n");
     }
