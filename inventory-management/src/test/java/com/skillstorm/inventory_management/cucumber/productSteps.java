@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.Assert;
 
 import com.skillstorm.inventory_management.selenium.Product;
 import java.time.Duration;
@@ -25,12 +26,12 @@ public class productSteps {
     private static final String url = "http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com";
     private int rowsBeforeChanges;
 
-    @Before
+    @Before("@product")
     public void setup(){
         ChromeOptions option = new ChromeOptions();
         option.addArguments("--headless=new");
-        this.driver = new ChromeDriver(option);
-        //this.driver = new ChromeDriver();
+        //this.driver = new ChromeDriver(option);
+        this.driver = new ChromeDriver();
         driver.get(url);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         this.product = new Product(driver);
@@ -153,33 +154,53 @@ public class productSteps {
     /*-----------------------------------------------------------------------------*/
 
     @Given("there is at least one product on the table")
-    public void there_is_at_least_one_product_on_the_table(Integer int1) {
-    // Write code here that turns the phrase above into concrete actions
-    System.out.println("EDIT");
+    public void there_is_at_least_one_product_on_the_table() {
+        // We cannot edit a row if none exist.
+        Assert.assertTrue(product.isRowsGreaterThanZero());    
     }
+
     @When("I click the edit icon button in a row")
     public void i_click_the_edit_icon_button_in_a_row() {
-    // Write code here that turns the phrase above into concrete actions
-    System.out.println("EDIT");
+    product.clickEditButton();
     }
     @Then("I should see the edit form")
     public void i_should_see_the_edit_form() {
-    // Write code here that turns the phrase above into concrete actions
-    System.out.println("EDIT");
+    Assert.assertTrue(product.isEditForm());
+    }
+    @When("I fill in the  edit name with {string}")
+    public void i_fill_in_the_edit_name_with(String name) {
+    product.editFillName(name);
+    }
+    @When("I fill in the  edit description with {string}")
+    public void i_fill_in_the_edit_description_with(String description) {
+    product.editFillDescription(description);
+    }
+    @When("I fill in the edit stock with {string}")
+    public void i_fill_in_the_edit_stock_with(String stock) {
+    product.editFillStock(stock);
+    }
+    @When("I fill in the edit warehouse with an existing warehouse id {string}")
+    public void i_fill_in_the_edit_warehouse_with_an_existing_warehouse_id(String warehouse) {
+    product.editWarehouse(warehouse);
+    }
+    @When("I click the edit submit button")
+    public void i_click_the_edit_submit_button() {
+    product.editFormSubmitButtonClick();
     }
     @Then("my selected product should be edited")
     public void my_selected_product_should_be_edited() {
-    // Write code here that turns the phrase above into concrete actions
-    System.out.println("EDIT");
+    //Assert.assertEquals(rowsBeforeChanges, product.getRows());
     }
 
     /*-----------------------------------------------------------------------------*/
-    /*        SCENARIO: Successfully edir a product                  | END         */
+    /*        SCENARIO: Successfully edit a product                  | END         */
     /*-----------------------------------------------------------------------------*/
 
-    @After
+    @After("@product")
     public void teardown(){
-        product.quitDriver();
+        if (this.driver != null) {
+            product.quitDriver();
+        }
         System.out.println("--------- SCENARIO COMPLETE -----------");
     }
 

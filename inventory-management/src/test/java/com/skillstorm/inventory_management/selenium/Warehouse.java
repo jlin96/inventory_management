@@ -12,13 +12,16 @@ import org.openqa.selenium.support.PageFactory;
 public class Warehouse {
 
     private WebDriver driver;
-    private static final String url = "http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com";
+    //private static final String url = "http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com";
 
-    @FindBy(xpath = "//*[contains(text(), 'Warehouses')]")
-    private WebElement warehouseTab;
+    //@FindBy(xpath = "//*[contains(text(), 'Warehouses')]")
+    //private WebElement warehouseTab;
 
     //@FindBy(xpath = "//div[contains(@class, 'side-bar-items') and text()='Warehouses']")
     //private WebElement warehouseTab1;
+
+    @FindBy(xpath = "//div[contains(@class, 'side-bar-items') and text()='Warehouses']")
+    private WebElement warehouseTab;
 
     @FindBy(className = "MuiBox-root")
     private WebElement warehouseTable;
@@ -38,22 +41,36 @@ public class Warehouse {
     @FindBy(xpath = "//div[@id='tableTitle' and text()='Warehouses']")
     private WebElement tableTitle;
 
+    @FindBy(xpath = "//input[contains(@class, 'warehouse-form-input') and @placeholder='Name']")
+    private WebElement nameInput;
+
+    @FindBy(xpath = "//input[contains(@class, 'warehouse-form-input') and @placeholder='Address']")
+    private WebElement addressInput;
+
+    @FindBy(xpath = "//button[contains(@class, 'warehouse-form-button')]")
+    private WebElement submitWarehouseButton;
+
+    @FindBy(xpath = "//p[contains(@class, 'MuiTablePagination-displayedRows css-1chpzqh')]")
+    private WebElement rowCount;
+
+    @FindBy(xpath="//button[@aria-label='Delete']")
+    private List<WebElement> deleteButton;
+
     public Warehouse(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
-    public void get() {
+    public void clickWarehouseTab() {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        this.driver.get(url);
         warehouseTab.click();
     }
 
-    public void addWarehouse() {
+    public void addWarehouseButtonClick() {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -70,6 +87,35 @@ public class Warehouse {
         }
         return driver.findElements(By.className("warehouse-form")).size() > 0;
     }
+
+    public void addNameInput(String name){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        nameInput.sendKeys(name);
+
+    }
+
+    public void addAddressInput(String address){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        addressInput.sendKeys(address);
+    }
+
+    public void clickSubmitWarehouseButton(){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        submitWarehouseButton.submit();
+    }
+
 
     public void addInputs() {
         try {
@@ -94,13 +140,13 @@ public class Warehouse {
         formSubmitButton.click();
     }
 
-    public boolean hasWarehouse() {
+    public boolean hasWarehouse(String name, String address) {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return (driver.getPageSource().contains("Walgreens") && driver.getPageSource().contains("765 Jones Street"));
+        return (driver.getPageSource().contains(name) && driver.getPageSource().contains(address));
     }
 
     public void clickEdit() {
@@ -184,5 +230,27 @@ public class Warehouse {
                 break;
             }
         }
+    }
+
+    public void clickDeleteButton(){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        //first click selects the row
+        deleteButton.get(0).click();
+        //second click deletes the selected row
+        deleteButton.get(0).click();
+    }
+
+    public int getRows(){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        String rowValue = rowCount.getText().substring(6).trim();
+        return Integer.parseInt(rowValue);
     }
 }

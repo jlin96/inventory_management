@@ -2,10 +2,10 @@
 Feature: Product
 Description: The purpose of this feature is to test product CRUD functionality
 
-  Background: Successfully navigate to the product page
-    Given I am on the homepage
-    When I select the product tab
-    Then I should see the product table
+  #Background: Successfully navigate to the product page
+  #  Given I am on the homepage
+  #  When I select the product tab
+  #  Then I should see the product table
 
   #Scenario: Successfully navigate to the product form
   #  When I click the add product button
@@ -31,15 +31,15 @@ Description: The purpose of this feature is to test product CRUD functionality
   #  When I double click the delete button
   #  Then the product should be deleted
 
-  #Scenario: Successfully edit an existing product
+  #Scenario Outline: Successfully edit an existing product
   #  Given there is at least one product on the table
   #  When I click the edit icon button in a row 
   #  Then I should see the edit form 
-  #  When I fill in the name with "<name>"
-  #  * I fill in the description with "<description>"
-  #  * I fill in the stock with "<stock>"
-  #  * I fill in the warehouse with an existing warehouse id "<warehouseID>"
-  #  * I click the submit button
+  #  When I fill in the  edit name with "<name>"
+  #  * I fill in the  edit description with "<description>"
+  #  * I fill in the edit stock with "<stock>"
+  #  * I fill in the edit warehouse with an existing warehouse id "<warehouseID>"
+  #  * I click the edit submit button
   #  Then my selected product should be edited
 
   #  Examples:

@@ -10,6 +10,7 @@
     <class name="com.skillstorm.inventory_management.services.WarehouseServiceTest"  />
     <class name="com.skillstorm.inventory_management.models.ModelDtoTest" />
     <class name="com.skillstorm.inventory_management.cucumber.RunCucumberTest" />
+    <class name="com.skillstorm.inventory_management.mappers.ProductMapperTest" />
 </classes>
 </test>
 </suite>

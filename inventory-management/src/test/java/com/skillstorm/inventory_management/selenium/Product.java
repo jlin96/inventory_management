@@ -51,6 +51,18 @@ public class Product {
 
     @FindBy(xpath="//button[@aria-label='Delete']")
     private List<WebElement> deleteButton;
+
+    @FindBy(xpath = "//button[@aria-label='Edit']")
+    private List<WebElement> editButtons;
+
+    @FindBy(xpath = "//span[contains(@class,'product-form-title') and text()='Edit Product ']")
+    private WebElement editFormName;
+
+    @FindBy(xpath="//input[contains(@class, 'product-form-input')]")
+    private List<WebElement> editInputForm;
+
+    @FindBy(xpath="//button[contains(@class,'product-form-button') and text()='Submit']")
+    private WebElement editFormSubmitButton;
      
     public Product(WebDriver driver) {
         this.driver = driver;
@@ -154,4 +166,57 @@ public class Product {
         //second click deletes the selected row
         deleteButton.get(0).click();
     }
+
+    public boolean isRowsGreaterThanZero(){
+        return getRows() > 0;
+    }
+
+    public void clickEditButton(){
+        editButtons.get(0).click();
+    }
+
+    public boolean isEditForm(){
+        return editFormName != null;
+    }
+
+    public void editFillName(String name){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        editInputForm.get(0).sendKeys(name);
+    }
+
+    public void editFillDescription(String description){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        editInputForm.get(1).sendKeys(description);
+    }
+
+    public void editFillStock(String name){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        editInputForm.get(2).sendKeys(name);
+    }
+
+    public void editWarehouse(String warehouseID){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        editInputForm.get(3).sendKeys(warehouseID);
+    }
+
+    public void editFormSubmitButtonClick(){
+        editFormSubmitButton.click();
+    }
+    
 }
