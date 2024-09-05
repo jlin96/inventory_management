@@ -125,18 +125,38 @@ public class Product {
     }
 
     public void fillName(String name){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         nameInput.sendKeys(name);
     }
 
     public void fillDescription(String description){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         descriptionInput.sendKeys(description);
     }
 
     public void fillStock(String stock){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         stockInput.sendKeys(stock);
     }
 
     public void fillWarehouse(String warehouseID){
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         warehouseInput.sendKeys(warehouseID);
     }
 
