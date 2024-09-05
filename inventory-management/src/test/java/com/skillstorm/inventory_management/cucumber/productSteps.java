@@ -128,7 +128,6 @@ public class productSteps {
 
     @When("I double click the delete button")
     public void i_double_click_the_delete_button(){
-        rowsBeforeChangesProduct = product.getRows();
         if (rowsBeforeChangesProduct > 0)
             product.clickDeleteButton();
         else
