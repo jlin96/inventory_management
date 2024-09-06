@@ -39,10 +39,10 @@ Testing Frameworks
 TestNG used for all testing including unit testing and cucumberRunner
 Mockito used for all unit testing inlcludes our Controllers and Service classes
 MeanBean used for model testing
-Cucumber used for behavior driven development 
+Cucumber used for behavior driven development -> report link posted in test console
 Selenium Web Driver used for testing the website  
 Tools 
-Jacoco Plugin - Gets code coverage for our backed and utilized in SonarCloud
+Jacoco Plugin - Gets code coverage for our backed and utilized in SonarCloud -> found in target/jacoco/index.html
 Jenkins - Contious Integration/ Continous Development tool 
 SonarCloud - Static Analysis tool integrated with Jenkins
 
