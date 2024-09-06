@@ -120,7 +120,7 @@ public class productSteps {
     @Given("there exist at least 1 product in the table")
     public void there_exist_at_least_1_product_in_the_table(){
         rowsBeforeChangesProduct = product.getRows();
-        if (rowsBeforeChangesProduct > 0)
+        if (product.isRowsGreaterThanZero())
             System.out.println("There does exist at least 1 product.\n");
         else
             System.out.print("Nothing to delete.\n");
@@ -128,7 +128,7 @@ public class productSteps {
 
     @When("I double click the delete button")
     public void i_double_click_the_delete_button(){
-        if (rowsBeforeChangesProduct > 0)
+        if (product.isRowsGreaterThanZero())
             product.clickDeleteButton();
         else
             System.out.print("Nothing to delete.\n");
@@ -194,8 +194,8 @@ public class productSteps {
     public void my_selected_product_should_be_edited() {
         product.clickHomeTab();
         product.clickProductTab();
-        System.out.println("Rows before changes : " + rowsBeforeChangesProduct);
-        System.out.println("Rows before changes : " + product.getRows());
+        System.out.println("Rows before edits : " + rowsBeforeChangesProduct);
+        System.out.println("Rows after edits : " + product.getRows());
         Assert.assertTrue(rowsBeforeChangesProduct == product.getRows());
     }
 
