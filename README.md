@@ -15,7 +15,7 @@ SonarCloud - Static Analysis tool integrated with Jenkins </br>
 
 <h1>Deployment</h1>
 AWS Aurora RDS utilized Postgres SQL</br>
-AWS S3 bucket host the front end as a static website </br>
+AWS S3 bucket host the front end as a static website : http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com/</br>
 AWS S3 bucket host backend code </br>
 EBS utilized the backend S3 bucket and an ec2 instance that is connected to the RDS </br>
 
