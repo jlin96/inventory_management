@@ -190,7 +190,7 @@ public class Product {
         deleteButton.get(0).click();
     }
         
-    // test
+    /* 
     public void clickDeleteButton1(){
         try {
             Thread.sleep(1000);
@@ -202,8 +202,8 @@ public class Product {
         deleteBtn.click();
         deleteBtn = deleteButtons.get(1);
         deleteBtn.click();
-
     }
+    */
 
     public boolean isRowsGreaterThanZero(){
         return getRows() > 0;
