@@ -14,6 +14,9 @@ public class Product {
     
     private WebDriver driver;
 
+    @FindBy(xpath="//div[contains(@class, 'side-bar-items') and text()='Home']")
+    private WebElement homeTab;
+
     @FindBy(xpath = "//div[contains(@class, 'side-bar-items') and text()='Products']")
     private WebElement productTab;
 
@@ -83,6 +86,16 @@ public class Product {
         }
         productTab.click();
     }
+
+    public void clickHomeTab(){
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        homeTab.click();
+    }
+
     public void clickAddProductButton(){
         
         addProductButton.click();

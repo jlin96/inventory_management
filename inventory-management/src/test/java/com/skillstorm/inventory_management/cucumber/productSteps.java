@@ -163,7 +163,7 @@ public class productSteps {
 
     @When("I click the edit icon button in a row")
     public void i_click_the_edit_icon_button_in_a_row() {
-        //rowsBeforeChangesProduct = product.getRows();
+        rowsBeforeChangesProduct = product.getRows();
         product.clickEditButton();
     }
     @Then("I should see the edit form")
@@ -192,7 +192,11 @@ public class productSteps {
     }
     @Then("my selected product should be edited")
     public void my_selected_product_should_be_edited() {
-        //Assert.assertEquals(rowsBeforeChangesProduct, product.getRows());
+        product.clickHomeTab();
+        product.clickProductTab();
+        System.out.println("Rows before changes : " + rowsBeforeChangesProduct);
+        System.out.println("Rows before changes : " + product.getRows());
+        Assert.assertTrue(rowsBeforeChangesProduct == product.getRows());
     }
 
     /*-----------------------------------------------------------------------------*/
