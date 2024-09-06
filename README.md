@@ -36,28 +36,28 @@ Clean up file management\
 Project 2 9/6/24
 
 <h1>Testing Frameworks</h1>
-TestNG used for all testing including unit testing and cucumberRunner
-Mockito used for all unit testing inlcludes our Controllers and Service classes
-MeanBean used for model testing
-Cucumber used for behavior driven development -> report link posted in test console
-Selenium Web Driver used for testing the website  
+TestNG used for all testing including unit testing and cucumberRunner </br>
+Mockito used for all unit testing inlcludes our Controllers and Service classes </br>
+MeanBean used for model testing </br>
+Cucumber used for behavior driven development -> report link posted in test console </br>
+Selenium Web Driver used for testing the website   </br>
 
 <h1>Tools</h1> 
-Jacoco Plugin - Gets code coverage for our backed and utilized in SonarCloud -> found in target/jacoco/index.html
-Jenkins - Contious Integration/ Continous Development tool 
-SonarCloud - Static Analysis tool integrated with Jenkins
+Jacoco Plugin - Gets code coverage for our backed and utilized in SonarCloud -> found in target/jacoco/index.html </br>
+Jenkins - Contious Integration/ Continous Development tool </br>
+SonarCloud - Static Analysis tool integrated with Jenkins </br>
 
 <h1>Deployment</h1>
-AWS Aurora RDS utilized Postgres SQL
-AWS S3 bucket host the front end as a static website
-AWS S3 bucket host backend code
-EBS utilized the backend S3 bucket and an ec2 instance that is connected to the RDS
+AWS Aurora RDS utilized Postgres SQL</br>
+AWS S3 bucket host the front end as a static website </br>
+AWS S3 bucket host backend code </br>
+EBS utilized the backend S3 bucket and an ec2 instance that is connected to the RDS </br>
 
 <h1>TODO</h1>
-FrontEnd testing with Jest was not covered.
-Jmeter was not implemented in the Jenkins Pipeline.
-BurbSuite Reporting was not utilized.
+FrontEnd testing with Jest was not covered. </br>
+Jmeter was not implemented in the Jenkins Pipeline. </br>
+BurbSuite Reporting was not utilized.</br>
 
 <h1>Reports</h1>
-SonarCloud https://sonarcloud.io/organizations/jlin96/projects
-#Only front end was tested
+SonarCloud https://sonarcloud.io/organizations/jlin96/projects </br>
+#Only front end was tested </br>
