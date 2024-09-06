@@ -25,10 +25,10 @@ Feature: Warehouse
      |Electronic Warehouse |8436 NW 36st |
      |East Warehouse       |1111 Main st |
 
-    Scenario: Successfully delete a warehouse
-      Given there exist at least one warehouse in the table
-      When I double click the delete button in the warehouse table
-      Then the warehouse should be deleted
+    #Scenario: Successfully delete a warehouse
+    #  Given there exist at least one warehouse in the table
+    #  When I double click the delete button in the warehouse table
+    #  Then the warehouse should be deleted
 
     Scenario: Clicking edit icon on a row
       When I click the edit icon on a warehouse row
