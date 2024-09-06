@@ -2,14 +2,14 @@
 
 Feature: Warehouse
 
-    #Background: Successfully navigate to the warehouse page
-    #  Given I am on the home page
-    #  When I click the warehouse tab
-    #  Then I should see the warehouse table
+    Background: Successfully navigate to the warehouse page
+      Given I am on the home page
+      When I click the warehouse tab
+      Then I should see the warehouse table
 
-    #Scenario: Successfully navigate to the warehouse form
-    #  When I click the add warehouse button
-    #  Then I should see the warehouse form
+    Scenario: Successfully navigate to the warehouse form
+      When I click the add warehouse button
+      Then I should see the warehouse form
 
     #Scenario Outline: Successfully add a warehouse to the table
     #    When I click the add warehouse button

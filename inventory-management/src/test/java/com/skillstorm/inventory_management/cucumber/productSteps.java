@@ -162,35 +162,36 @@ public class productSteps {
 
     @When("I click the edit icon button in a row")
     public void i_click_the_edit_icon_button_in_a_row() {
-    product.clickEditButton();
+        //rowsBeforeChangesProduct = product.getRows();
+        product.clickEditButton();
     }
     @Then("I should see the edit form")
     public void i_should_see_the_edit_form() {
-    Assert.assertTrue(product.isEditForm());
+        Assert.assertTrue(product.isEditForm());
     }
     @When("I fill in the  edit name with {string}")
     public void i_fill_in_the_edit_name_with(String name) {
-    product.editFillName(name);
+        product.editFillName(name);
     }
     @When("I fill in the  edit description with {string}")
     public void i_fill_in_the_edit_description_with(String description) {
-    product.editFillDescription(description);
+        product.editFillDescription(description);
     }
     @When("I fill in the edit stock with {string}")
     public void i_fill_in_the_edit_stock_with(String stock) {
-    product.editFillStock(stock);
+        product.editFillStock(stock);
     }
     @When("I fill in the edit warehouse with an existing warehouse id {string}")
     public void i_fill_in_the_edit_warehouse_with_an_existing_warehouse_id(String warehouse) {
-    product.editWarehouse(warehouse);
+        product.editWarehouse(warehouse);
     }
     @When("I click the edit submit button")
     public void i_click_the_edit_submit_button() {
-    product.editFormSubmitButtonClick();
+        product.editFormSubmitButtonClick();
     }
     @Then("my selected product should be edited")
     public void my_selected_product_should_be_edited() {
-    //Assert.assertEquals(rowsBeforeChanges, product.getRows());
+        //Assert.assertEquals(rowsBeforeChangesProduct, product.getRows());
     }
 
     /*-----------------------------------------------------------------------------*/
