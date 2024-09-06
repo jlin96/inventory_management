@@ -33,3 +33,21 @@ Separate user login/splash page\
 Clean up Table component\
 Clean up file management\
 
+Project 2 9/6/24
+
+Testing Frameworks
+TestNG used for all testing including unit testing and cucumberRunner
+Mockito used for all unit testing inlcludes our Controllers and Service classes
+MeanBean used for model testing
+Cucumber used for behavior driven development 
+Selenium Web Driver used for testing the website  
+Tools 
+Jacoco Plugin - Gets code coverage for our backed and utilized in SonarCloud
+Jenkins - Contious Integration/ Continous Development tool 
+SonarCloud - Static Analysis tool integrated with Jenkins
+
+Deployment
+AWS Aurora RDS utilized Postgres SQL
+AWS S3 bucket host the front end as a static website
+AWS S3 bucket host backend code
+EBS utilized the backend S3 bucket and an ec2 instance that is connected to the RDS
