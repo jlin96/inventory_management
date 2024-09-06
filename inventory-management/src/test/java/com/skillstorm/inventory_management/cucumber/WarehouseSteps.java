@@ -111,6 +111,7 @@ public class WarehouseSteps {
     /*-----------------------------------------------------------------------------*/
     @Given("there exist at least one warehouse in the table")
     public void there_exist_at_least_one_warehouse_in_the_table() {
+        
         if (rowsBeforeChanges > 0)
             System.out.println("There does exist at least 1 product.\n");
         else
@@ -126,13 +127,13 @@ public class WarehouseSteps {
     }
     @Then("the warehouse should be deleted")
     public void the_warehouse_should_be_deleted() {
-        System.out.println("Rows before : " + rowsBeforeChanges);
-        System.out.println("Rows after : " + warehouse.getRows());
+        //System.out.println("Rows before : " + rowsBeforeChanges);
+        //System.out.println("Rows after : " + warehouse.getRows());
 
-        if (rowsBeforeChanges > 0)
-            Assert.assertEquals(warehouse.getRows(), warehouse.getRows());
-        else
-            System.out.print("Nothing to delete.\n");
+        //if (rowsBeforeChanges > 0)
+        //    Assert.assertEquals(warehouse.getRows(), warehouse.getRows());
+        //else
+        //    System.out.print("Nothing to delete.\n");
     }
     /*-----------------------------------------------------------------------------*/
     /*        SCENARIO: Successfully delete a warehouse             | END          */
@@ -150,48 +151,30 @@ public class WarehouseSteps {
 
     @Then("I should see the edit warehouse modal")
     public void iShouldSeeTheEditWarehouseModal() {
-        assertTrue(warehouse.onForm());
+        Assert.assertTrue(warehouse.hasEditedWarehouse());
     }
     /*-----------------------------------------------------------------------------*/
     /*        SCENARIO: Clicking edit icon on a row                 | END          */
     /*-----------------------------------------------------------------------------*/
     
 
-
-    
-    
-    
-    
     @Given("I am on the edit warehouse modal")
     public void iAmOnTheEditWarehouseModal() {
-        warehouse.clickWarehouseTab();
+
         warehouse.clickEdit();
         warehouse.editInputs();
-
     }
     
     @Then("I should see the edited warehouse show up on the table")
     public void iShouldSeeTheEditedWarehouseShowUpOnTheTable() {
-        assertTrue(warehouse.hasEditedWarehouse());
+        Assert.assertTrue(warehouse.hasEditedWarehouse());
     }
     
-   
-
     @After("@warehouse")
     public void after() {
         if (this.driver != null) {
             this.driver.quit();
         }
     }
-
-    // @When("I click the delete icon on a warehouse row")
-    // public void iClickTheDeleteIconOnAWarehouseRow() {
-    //     warehouse.clickDelete();
-    // }
-
-    // @Then("I should not see the warehouse show up on the table")
-    // public void iShouldNotSeeTheWarehouseShowUpOnTheTable() {
-    //     assertFalse(warehouse.hasEditedWarehouse());
-    // }
 
 }

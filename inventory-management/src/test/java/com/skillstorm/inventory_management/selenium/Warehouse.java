@@ -12,14 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 public class Warehouse {
 
     private WebDriver driver;
-    //private static final String url = "http://team-6-frontend-jenkins.s3-website-us-east-1.amazonaws.com";
-
-    //@FindBy(xpath = "//*[contains(text(), 'Warehouses')]")
-    //private WebElement warehouseTab;
-
-    //@FindBy(xpath = "//div[contains(@class, 'side-bar-items') and text()='Warehouses']")
-    //private WebElement warehouseTab1;
-
+    
     @FindBy(xpath = "//div[contains(@class, 'side-bar-items') and text()='Warehouses']")
     private WebElement warehouseTab;
 
@@ -52,6 +45,9 @@ public class Warehouse {
 
     @FindBy(xpath = "//p[contains(@class, 'MuiTablePagination-displayedRows css-1chpzqh')]")
     private WebElement rowCount;
+
+    @FindBy(xpath ="//span[contains(@class, 'warehouse-form-title') and text()='Edit Warehouse ']")
+    private WebElement editFormTitle;
 
     /* 
     @FindBy(xpath="//button[@aria-label='Delete']")
@@ -193,7 +189,7 @@ public class Warehouse {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return (driver.getPageSource().contains("New Walgreens") && driver.getPageSource().contains("567 Jones Street"));
+        return (driver.getPageSource().contains("East Warehouse") && driver.getPageSource().contains("1111 Main st"));
     }
     public String getHomeTitle(){
         if(homeTitle != null)
@@ -239,10 +235,12 @@ public class Warehouse {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        //@FindBy(xpath="//button[@aria-label='Delete']")
+        List<WebElement> deleteButton = driver.findElements(By.xpath("//button[@aria-label='Delete']"));
         //first click selects the row
-        //deleteButton.get(1).click();
+        deleteButton.get(1).click();
         //second click deletes the selected row
-        //deleteButton.get(1).click();
+        deleteButton.get(1).click();
     }
 
     public int getRows(){
@@ -254,4 +252,13 @@ public class Warehouse {
         String rowValue = rowCount.getText().substring(6).trim();
         return Integer.parseInt(rowValue);
     }
+
+
+    public boolean isEditFormTitle(){
+
+        if (editFormTitle != null)
+            return true;
+        else 
+            return false;
+}
 }

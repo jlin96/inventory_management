@@ -97,7 +97,7 @@ public class ProductControllerTest {
     @Test(priority = 1)
     public void testSaveSunnyDay() {
         // Arrange
-        when(service.save(any(Product.class))).thenReturn(arbitraryProduct);
+        when(service.save(any(Product.class))).thenReturn(arbitraryProduct); 
         // Act 
         Product actual = controller.save(arbitraryProduct);
         // Assert
