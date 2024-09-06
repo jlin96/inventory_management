@@ -158,6 +158,11 @@ public class WarehouseSteps {
     /*-----------------------------------------------------------------------------*/
     
 
+
+
+    /*-----------------------------------------------------------------------------*/
+    /*        SCENARIO: Editing a warehouse                         | START        */
+    /*-----------------------------------------------------------------------------*/
     @Given("I am on the edit warehouse modal")
     public void iAmOnTheEditWarehouseModal() {
 
@@ -169,7 +174,13 @@ public class WarehouseSteps {
     public void iShouldSeeTheEditedWarehouseShowUpOnTheTable() {
         Assert.assertTrue(warehouse.hasEditedWarehouse());
     }
-    
+    /*-----------------------------------------------------------------------------*/
+    /*        SCENARIO: Editing a warehouse                         | END          */
+    /*-----------------------------------------------------------------------------*/
+
+
+
+
     @After("@warehouse")
     public void after() {
         if (this.driver != null) {
