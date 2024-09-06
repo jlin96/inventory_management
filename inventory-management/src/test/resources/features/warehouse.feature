@@ -25,6 +25,7 @@ Feature: Warehouse
      |Electronic Warehouse |8436 NW 36st |
      |East Warehouse       |1111 Main st |
 
+    # Gives stale element error through jenkins pipeline
     #Scenario: Successfully delete a warehouse
     #  Given there exist at least one warehouse in the table
     #  When I double click the delete button in the warehouse table
